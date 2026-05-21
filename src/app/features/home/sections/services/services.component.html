@@ -1,0 +1,26 @@
+<section id="services" class="relative section-padding">
+  <app-section-header
+    badge="Services"
+    title="What I Offer"
+    subtitle="End-to-end development services for ambitious products"
+  />
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    @for (service of portfolio.services; track service.id) {
+      <div
+        appRevealOnScroll
+        [delay]="$index * 50"
+        appTiltCard
+        class="glass rounded-3xl p-6 group hover:border-accent/40 border border-transparent transition-all duration-300 cursor-default"
+      >
+        <div
+          class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent-secondary/20 flex items-center justify-center mb-5 group-hover:shadow-[0_0_25px_rgba(0,245,255,0.3)] transition-shadow"
+        >
+          <span class="text-2xl">{{ service.icon === 'smartphone' ? '📱' : service.icon === 'globe' ? '🌐' : service.icon === 'layers' ? '📚' : service.icon === 'plug' ? '🔌' : service.icon === 'flame' ? '🔥' : service.icon === 'palette' ? '🎨' : service.icon === 'zap' ? '⚡' : '📦' }}</span>
+        </div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-accent transition-colors">{{ service.title }}</h3>
+        <p class="text-text-muted text-sm leading-relaxed">{{ service.description }}</p>
+      </div>
+    }
+  </div>
+</section>

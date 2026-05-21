@@ -1,0 +1,133 @@
+<app-page-hero
+  [label]="portfolio.pageMeta.contact.label"
+  breadcrumb="Contact"
+  [title]="portfolio.pageMeta.contact.title"
+  [description]="portfolio.pageMeta.contact.description"
+/>
+
+<section class="page-container pb-24">
+  <div class="grid lg:grid-cols-5 gap-8 lg:gap-10">
+    <div class="lg:col-span-2 space-y-5">
+      <div class="card p-7 space-y-6">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-lg">Direct contact</h3>
+          <span class="status-pill is-live">
+            <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+            Replying within 24h
+          </span>
+        </div>
+        <a [href]="'mailto:' + portfolio.profile.email" class="flex items-center gap-4 group">
+          <span class="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-lg group-hover:scale-105 transition-transform">✉</span>
+          <div class="min-w-0">
+            <p class="text-xs text-text-subtle uppercase tracking-wider">Email</p>
+            <p class="text-sm text-text-muted group-hover:text-accent transition-colors truncate">{{ portfolio.profile.email }}</p>
+          </div>
+        </a>
+        <a [href]="'tel:' + portfolio.profile.phone.replaceAll(' ', '')" class="flex items-center gap-4 group">
+          <span class="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-lg">📞</span>
+          <div>
+            <p class="text-xs text-text-subtle uppercase tracking-wider">Phone</p>
+            <p class="text-sm text-text-muted group-hover:text-accent transition-colors">{{ portfolio.profile.phone }}</p>
+          </div>
+        </a>
+        <div class="flex items-center gap-4">
+          <span class="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-lg">📍</span>
+          <div>
+            <p class="text-xs text-text-subtle uppercase tracking-wider">Location</p>
+            <p class="text-sm text-text-muted">{{ portfolio.profile.location }}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 pt-2 border-t border-line">
+          <span class="w-12 h-12 rounded-2xl bg-accent-cyan/10 border border-accent-cyan/20 flex items-center justify-center text-lg">🕒</span>
+          <div>
+            <p class="text-xs text-text-subtle uppercase tracking-wider">Working hours</p>
+            <p class="text-sm text-text-muted">{{ portfolio.profile.workingHours }}</p>
+            <p class="text-[11px] text-accent-cyan font-mono mt-0.5">{{ portfolio.profile.timezone }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <a [href]="'https://wa.me/' + portfolio.profile.phone.replaceAll(' ', '').replace('+', '')" target="_blank" rel="noopener" class="card p-5 text-center hover:border-emerald-500/30 group">
+          <span class="text-2xl">💬</span>
+          <p class="text-sm font-semibold mt-2 group-hover:text-emerald-400">WhatsApp</p>
+        </a>
+        <a [href]="'mailto:' + portfolio.profile.email" class="card p-5 text-center group">
+          <span class="text-2xl">✉️</span>
+          <p class="text-sm font-semibold mt-2 group-hover:text-accent">Email</p>
+        </a>
+      </div>
+      <div class="flex gap-2">
+        @for (social of portfolio.socialLinks; track social.name) {
+          <a
+            [href]="social.url"
+            target="_blank"
+            rel="noopener"
+            class="flex-1 h-11 rounded-xl border border-line bg-bg-elevated/40 flex items-center justify-center text-[10px] font-bold text-text-subtle hover:text-accent hover:border-accent/30 uppercase tracking-wide transition-all"
+            [attr.aria-label]="social.name"
+          >
+            {{ social.icon.slice(0, 2) }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      @if (submitted()) {
+        <div class="card p-12 sm:p-16 text-center">
+          <div class="w-20 h-20 rounded-3xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-4xl text-emerald-400 mx-auto mb-6">✓</div>
+          <h3 class="text-2xl font-bold mb-2">Message received</h3>
+          <p class="text-text-muted text-sm max-w-sm mx-auto">Thanks for reaching out. I'll review your project and respond within 24 hours.</p>
+          <button (click)="submitted.set(false)" class="btn-ghost mt-8">Send another message</button>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="card p-8 sm:p-10 space-y-5">
+          <h3 class="font-semibold text-lg pb-4 border-b border-line">Project inquiry</h3>
+          <div>
+            <label class="text-xs font-medium text-text-subtle uppercase tracking-wider mb-2 block">Name</label>
+            <input type="text" formControlName="name" class="input-field" placeholder="Your full name" />
+          </div>
+          <div>
+            <label class="text-xs font-medium text-text-subtle uppercase tracking-wider mb-2 block">Email</label>
+            <input type="email" formControlName="email" class="input-field" placeholder="you@company.com" />
+          </div>
+          <div>
+            <label class="text-xs font-medium text-text-subtle uppercase tracking-wider mb-2 block">Project type</label>
+            <select formControlName="projectType" class="input-field">
+              <option value="" disabled>Select project type</option>
+              @for (t of projectTypes; track t) {
+                <option [value]="t">{{ t }}</option>
+              }
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-text-subtle uppercase tracking-wider mb-2 block">Message</label>
+            <textarea formControlName="message" rows="5" class="input-field resize-none" placeholder="Describe your project, timeline, and budget range..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full sm:w-auto" [disabled]="submitting()">
+            {{ submitting() ? 'Sending...' : 'Send message' }}
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+
+  <div class="mt-24">
+    <p class="section-label">Testimonials</p>
+    <h2 class="section-title mb-10">Trusted by teams</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      @for (t of portfolio.testimonials; track t.id) {
+        <div class="card p-7">
+          <div class="flex gap-0.5 text-accent-cyan text-sm mb-4">★★★★★</div>
+          <p class="text-sm text-text-muted leading-relaxed italic">"{{ t.content }}"</p>
+          <div class="flex items-center gap-3 mt-6 pt-6 border-t border-line">
+            <img [src]="t.avatar" [alt]="t.name" class="w-11 h-11 rounded-xl object-cover border border-line-strong" />
+            <div>
+              <p class="font-semibold text-sm">{{ t.name }}</p>
+              <p class="text-xs text-text-subtle">{{ t.role }} · {{ t.company }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

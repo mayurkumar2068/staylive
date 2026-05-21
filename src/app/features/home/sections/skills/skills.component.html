@@ -1,0 +1,50 @@
+<section id="skills" class="relative section-padding overflow-hidden">
+  <app-section-header
+    badge="Skills"
+    title="Technical Arsenal"
+    subtitle="Expertise across mobile, web, backend, and modern tooling"
+  />
+
+  <div class="marquee-wrapper mb-16 overflow-hidden py-4 glass rounded-2xl">
+    <div class="marquee-track flex gap-8">
+      @for (tech of [...portfolio.techMarquee, ...portfolio.techMarquee]; track $index) {
+        <span class="text-text-muted font-mono text-sm whitespace-nowrap px-4">{{ tech }}</span>
+        <span class="text-accent">•</span>
+      }
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for (category of portfolio.skillCategories; track category.id) {
+      <div
+        appRevealOnScroll
+        [delay]="$index * 80"
+        appTiltCard
+        class="glass rounded-3xl p-6 hover:border-accent/30 border border-transparent transition-colors duration-300"
+      >
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">
+            {{ category.title.charAt(0) }}
+          </div>
+          <h3 class="font-semibold text-lg">{{ category.title }}</h3>
+        </div>
+        <div class="space-y-4">
+          @for (skill of category.skills; track skill.name) {
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span>{{ skill.name }}</span>
+                <span class="text-accent">{{ skill.level }}%</span>
+              </div>
+              <div class="h-2 bg-bg-elevated rounded-full overflow-hidden">
+                <div
+                  class="h-full rounded-full bg-gradient-to-r from-accent to-accent-secondary transition-all duration-1000"
+                  [style.width.%]="skill.level"
+                ></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

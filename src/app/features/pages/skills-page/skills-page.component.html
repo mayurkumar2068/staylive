@@ -1,0 +1,47 @@
+<app-page-hero
+  [label]="portfolio.pageMeta.skills.label"
+  breadcrumb="Skills"
+  [title]="portfolio.pageMeta.skills.title"
+  [description]="portfolio.pageMeta.skills.description"
+/>
+
+<section class="page-container pb-24">
+  <div class="card p-6 mb-14 overflow-hidden">
+    <div class="flex animate-marquee whitespace-nowrap gap-8">
+      @for (tech of [...portfolio.techMarquee, ...portfolio.techMarquee]; track $index) {
+        <span class="text-sm font-mono text-text-muted">{{ tech }}</span>
+      }
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-5">
+    @for (category of portfolio.skillCategories; track category.id) {
+      <div class="card p-7 sm:p-8">
+        <div class="flex items-center gap-4 mb-8 pb-6 border-b border-line">
+          <span
+            class="w-11 h-11 rounded-2xl bg-gradient-to-br from-accent/20 to-accent-secondary/20 flex items-center justify-center text-accent-cyan font-bold border border-line"
+          >
+            {{ category.title.charAt(0) }}
+          </span>
+          <h3 class="font-semibold text-lg">{{ category.title }}</h3>
+        </div>
+        <div class="space-y-6">
+          @for (skill of category.skills; track skill.name) {
+            <div>
+              <div class="flex justify-between text-sm mb-2.5">
+                <span class="font-medium">{{ skill.name }}</span>
+                <span class="text-accent-cyan font-mono text-xs">{{ skill.level }}%</span>
+              </div>
+              <div class="h-2 bg-bg-elevated rounded-full overflow-hidden border border-line">
+                <div
+                  class="h-full rounded-full bg-gradient-to-r from-accent-cyan via-accent to-accent-secondary"
+                  [style.width.%]="skill.level"
+                ></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

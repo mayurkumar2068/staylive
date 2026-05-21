@@ -1,0 +1,283 @@
+<!-- ──────────────────────────  HERO  ────────────────────────── -->
+<section class="hero-section relative pt-28 sm:pt-32 pb-20 sm:pb-24">
+  <div class="absolute inset-0 bg-gradient-to-b from-accent/[0.05] to-transparent pointer-events-none"></div>
+
+  <div class="page-container relative">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <!-- Left: Content -->
+      <div class="order-2 lg:order-1">
+        <div class="flex flex-wrap items-center gap-2.5 mb-7">
+          <div class="badge-live">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            {{ portfolio.profile.availability }}
+          </div>
+          <div class="ist-clock-pill">
+            <span class="ist-clock-dot"></span>
+            <span class="font-mono">{{ currentISTTime() || '—:— IST' }}</span>
+            <span class="text-text-subtle/70 hidden sm:inline">·</span>
+            <span class="text-text-subtle hidden sm:inline">Bhopal, IN</span>
+          </div>
+        </div>
+
+        <p class="text-text-muted text-lg mb-2">Hi, I'm</p>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight text-text-primary mb-3">
+          <span class="gradient-text">{{ portfolio.profile.name }}</span>
+        </h1>
+        <p class="text-xl sm:text-2xl text-text-primary/90 font-medium mb-4">
+          {{ portfolio.profile.title }}
+        </p>
+
+        <p class="text-text-muted leading-relaxed mb-6 max-w-md text-base">
+          Award-winning <strong class="text-text-primary font-medium">Flutter</strong> engineer building production
+          mobile apps for the Govt. of MP, plus <strong class="text-text-primary font-medium">Angular</strong> dashboards
+          &amp; SaaS products for global clients.
+        </p>
+
+        <p class="inline-flex items-center gap-2 text-sm text-accent-cyan font-mono mb-8 px-4 py-2 rounded-xl bg-accent/5 border border-accent/15">
+          <span class="text-text-subtle">Building</span>
+          <span class="text-text-primary">{{ typedText() }}</span>
+          <span class="animate-pulse">|</span>
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-8">
+          <a routerLink="/contact" class="btn-primary" appMagnetic>
+            Hire Me
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a routerLink="/projects" class="btn-outline" appMagnetic>View Projects</a>
+          <a [href]="portfolio.profile.resumeUrl" target="_blank" class="btn-ghost text-sm">Résumé ↗</a>
+        </div>
+
+        <div class="flex items-center gap-2 pt-6 border-t border-line">
+          @for (social of portfolio.socialLinks; track social.name) {
+            <a
+              [href]="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl border border-line bg-bg-elevated/30 flex items-center justify-center text-[10px] font-bold text-text-subtle hover:text-accent hover:border-accent/30 transition-colors uppercase"
+              [attr.aria-label]="social.name"
+              appMagnetic
+              [strength]="0.25"
+            >
+              {{ social.icon.slice(0, 2) }}
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Right: Photo + glassmorphic stats -->
+      <div class="order-1 lg:order-2 hero-photo-wrap">
+        <div class="hero-photo-glow"></div>
+        <div class="hero-photo-card" appSpotlight>
+          <img
+            [src]="portfolio.photos.hero"
+            [alt]="portfolio.profile.name"
+            class="hero-photo-img"
+            fetchpriority="high"
+          />
+          <div class="hero-photo-stats">
+            <div>
+              <p class="text-2xl font-bold gradient-text">{{ portfolio.profile.yearsExperience }}+</p>
+              <p class="text-[11px] text-text-subtle uppercase tracking-wide">Years</p>
+            </div>
+            <div class="hero-photo-divider"></div>
+            <div>
+              <p class="text-2xl font-bold gradient-text">2×</p>
+              <p class="text-[11px] text-text-subtle uppercase tracking-wide">Awards</p>
+            </div>
+            <div class="hero-photo-divider"></div>
+            <div>
+              <p class="text-2xl font-bold gradient-text">1M+</p>
+              <p class="text-[11px] text-text-subtle uppercase tracking-wide">Users</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────  TECH MARQUEE  ────────────────────────── -->
+<section class="section-tint py-3 overflow-hidden">
+  <div class="flex animate-marquee whitespace-nowrap">
+    @for (tech of [...portfolio.techMarquee, ...portfolio.techMarquee]; track $index) {
+      <span class="mx-8 text-sm font-mono text-text-subtle">{{ tech }}</span>
+      <span class="text-accent/40">•</span>
+    }
+  </div>
+</section>
+
+<!-- ──────────────────────────  STATS  ────────────────────────── -->
+<section class="page-container py-14 sm:py-16">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    @for (stat of portfolio.stats; track stat.label) {
+      <div class="stat-box" appSpotlight>
+        <p class="text-3xl sm:text-4xl font-bold gradient-text">{{ stat.value }}{{ stat.suffix }}</p>
+        <p class="text-sm text-text-muted mt-2">{{ stat.label }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ──────────────────────────  FEATURED PROJECTS  ────────────────────────── -->
+<section class="page-container pb-16 sm:pb-20">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+    <div>
+      <p class="section-label">Featured Work</p>
+      <h2 class="section-title heading-flare">Hand-crafted products</h2>
+    </div>
+    <a routerLink="/projects" class="btn-outline text-sm shrink-0" appMagnetic>
+      View all
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-6">
+    @for (project of featuredProjects; track project.id) {
+      <a [routerLink]="['/projects']" class="home-project-card neon-border" appSpotlight>
+        <div class="home-project-image">
+          <img [src]="project.image" [alt]="project.title" loading="lazy" />
+          <div class="home-project-overlay">
+            @switch (project.status) {
+              @case ('live') {
+                <span class="status-pill is-live">
+                  <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span> Live
+                </span>
+              }
+              @case ('in-development') {
+                <span class="status-pill is-dev">⚡ In Dev</span>
+              }
+              @case ('case-study') {
+                <span class="status-pill is-case">◇ Case Study</span>
+              }
+            }
+            <span class="text-[11px] font-mono uppercase tracking-wider text-text-subtle">{{ project.year }}</span>
+          </div>
+        </div>
+        <div class="home-project-body">
+          <div class="flex items-baseline justify-between gap-3 mb-1">
+            <h3 class="text-xl font-bold tracking-tight">{{ project.title }}</h3>
+            <span class="text-[10px] uppercase tracking-[0.18em] font-bold text-accent">{{ project.platform }}</span>
+          </div>
+          @if (project.tagline) { <p class="text-accent/80 text-sm font-medium mb-2">{{ project.tagline }}</p> }
+          <p class="text-sm text-text-muted line-clamp-2 leading-relaxed mb-4">{{ project.description }}</p>
+          <div class="flex flex-wrap gap-1.5">
+            @for (tech of project.techStack.slice(0, 4); track tech) {
+              <span class="chip text-[10px] !py-1 !px-2">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </a>
+    }
+  </div>
+</section>
+
+<!-- ──────────────────────────  AWARDS & CREDS BAND  ────────────────────────── -->
+<section class="section-tint py-14 sm:py-16">
+  <div class="page-container">
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-4">
+        <p class="section-label">Recognition</p>
+        <h2 class="section-title heading-flare mb-4">Awards &amp; certifications</h2>
+        <p class="text-text-muted leading-relaxed">
+          Recognised twice at MPSeDC for single-handed ownership and on-time delivery of citizen-scale Flutter apps,
+          with certifications from Meta, IBM, and Packt.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8 space-y-3">
+        @for (award of portfolio.awards; track award.id) {
+          <div class="award-card" appSpotlight>
+            <div class="award-icon">{{ award.icon }}</div>
+            <div class="flex-1">
+              <div class="flex items-baseline justify-between gap-3">
+                <h3 class="font-semibold text-text-primary">{{ award.title }}</h3>
+                <span class="text-xs font-mono text-accent">{{ award.year }}</span>
+              </div>
+              <p class="text-xs text-text-subtle font-medium uppercase tracking-wider mt-1">{{ award.issuer }}</p>
+              <p class="text-sm text-text-muted mt-2 leading-relaxed">{{ award.description }}</p>
+            </div>
+          </div>
+        }
+
+        <div class="grid sm:grid-cols-2 gap-3 pt-4">
+          @for (cert of portfolio.certifications; track cert.id) {
+            <div class="cert-card" appSpotlight>
+              <span class="cert-icon">{{ cert.icon }}</span>
+              <div>
+                <p class="text-sm font-semibold text-text-primary leading-tight">{{ cert.title }}</p>
+                <p class="text-[11px] uppercase tracking-wider text-text-subtle mt-1">{{ cert.issuer }} · {{ cert.year }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────  WHY ME  ────────────────────────── -->
+<section class="page-container pt-16 sm:pt-20 pb-16 sm:pb-20">
+  <p class="section-label">Why work with me</p>
+  <h2 class="section-title heading-flare mb-10">Reliable delivery, premium quality</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    @for (item of portfolio.valueProps; track item.title) {
+      <div class="value-box" appSpotlight>
+        <span class="text-xl text-accent-cyan mb-4 block">{{ item.icon }}</span>
+        <h3 class="font-semibold text-lg mb-2">{{ item.title }}</h3>
+        <p class="text-sm text-text-muted leading-relaxed">{{ item.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ──────────────────────────  TESTIMONIAL  ────────────────────────── -->
+@if (portfolio.testimonials[0]; as t) {
+  <section class="page-container pb-16 sm:pb-20">
+    <div class="testimonial-box" appSpotlight>
+      <div class="flex gap-1 text-accent-cyan text-sm mb-4">★★★★★</div>
+      <p class="text-lg sm:text-xl text-text-primary/90 leading-relaxed italic max-w-3xl">"{{ t.content }}"</p>
+      <div class="flex items-center gap-3 mt-6 pt-6 border-t border-line">
+        <img [src]="t.avatar" [alt]="t.name" class="w-11 h-11 rounded-xl object-cover" />
+        <div>
+          <p class="font-semibold text-sm">{{ t.name }}</p>
+          <p class="text-xs text-text-subtle">{{ t.role }} · {{ t.company }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ──────────────────────────  SERVICES PREVIEW  ────────────────────────── -->
+<section class="section-tint py-16 sm:py-20">
+  <div class="page-container">
+    <p class="section-label text-center justify-center">Services</p>
+    <h2 class="section-title text-center mb-10">What I offer</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      @for (service of portfolio.services.slice(0, 4); track service.id) {
+        <div class="service-box" appSpotlight>
+          <div class="service-icon">✦</div>
+          <h3 class="font-semibold text-sm mb-2">{{ service.title }}</h3>
+          <p class="text-xs text-text-muted leading-relaxed">{{ service.description }}</p>
+        </div>
+      }
+    </div>
+    <div class="text-center mt-10">
+      <a routerLink="/services" class="btn-outline" appMagnetic>All services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────  CTA  ────────────────────────── -->
+<section class="page-container pb-20 sm:pb-24 pt-16 sm:pt-20">
+  <div class="cta-box" appSpotlight>
+    <p class="section-label justify-center">Let's build</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mb-3">Ready to ship your next product?</h2>
+    <p class="text-text-muted mb-2 max-w-lg mx-auto">Flutter mobile app, Angular dashboard, or full SaaS platform — typical reply within 24 hours.</p>
+    <p class="text-xs text-text-subtle font-mono mb-8">{{ portfolio.profile.workingHours }}</p>
+    <a routerLink="/contact" class="btn-primary" appMagnetic>
+      Get in touch
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+</section>

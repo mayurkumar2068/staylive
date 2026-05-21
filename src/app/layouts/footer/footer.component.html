@@ -1,0 +1,64 @@
+<footer class="relative mt-auto border-t border-line bg-bg-secondary/50">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"></div>
+  <div class="page-container py-16 sm:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div class="md:col-span-5">
+        <a routerLink="/" class="inline-flex items-center gap-3 mb-6">
+          <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center text-sm font-bold text-white">M</span>
+          <span class="font-display font-semibold text-xl">Mayur Bobade</span>
+        </a>
+        <p class="text-text-muted text-sm leading-relaxed max-w-sm mb-5">
+          Software Engineer (Flutter &amp; Full Stack) based in Bhopal, India — building Govt-scale citizen apps,
+          Angular dashboards, and premium SaaS products.
+        </p>
+        <div class="flex flex-wrap items-center gap-2 mb-6 text-xs text-text-subtle">
+          <span class="status-pill is-live">
+            <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+            Available
+          </span>
+          <span>·</span>
+          <span class="font-mono">{{ portfolio.profile.timezone }}</span>
+        </div>
+        <a routerLink="/contact" class="btn-primary text-sm">Start a project</a>
+      </div>
+      <div class="md:col-span-3">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-text-subtle mb-5">Navigation</h4>
+        <ul class="space-y-3">
+          @for (link of portfolio.navLinks; track link.id) {
+            <li>
+              <a [routerLink]="link.path" class="text-sm text-text-muted hover:text-accent-cyan transition-colors">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+      <div class="md:col-span-4">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-text-subtle mb-5">Connect</h4>
+        <a [href]="'mailto:' + portfolio.profile.email" class="block text-sm text-text-muted hover:text-accent transition-colors mb-1">
+          {{ portfolio.profile.email }}
+        </a>
+        <a [href]="'tel:' + portfolio.profile.phone.replaceAll(' ', '')" class="block text-sm text-text-muted hover:text-accent transition-colors mb-4">
+          {{ portfolio.profile.phone }}
+        </a>
+        <div class="flex flex-wrap gap-2">
+          @for (social of portfolio.socialLinks; track social.name) {
+            <a
+              [href]="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl border border-line bg-bg-elevated/20 text-xs font-medium text-text-muted hover:text-accent hover:border-accent/30 transition-all"
+            >
+              {{ social.name }}
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="divider my-10"></div>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-text-subtle">
+      <p>© {{ year }} Mayur Bobade · Crafted with Angular &amp; Tailwind</p>
+      <p>Bhopal, MP · India · {{ portfolio.profile.workingHours }}</p>
+    </div>
+  </div>
+</footer>

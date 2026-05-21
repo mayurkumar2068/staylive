@@ -1,0 +1,32 @@
+<app-page-hero
+  [label]="portfolio.pageMeta.services.label"
+  breadcrumb="Services"
+  [title]="portfolio.pageMeta.services.title"
+  [description]="portfolio.pageMeta.services.description"
+/>
+
+<section class="page-container pb-24">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    @for (service of portfolio.services; track service.id; let i = $index) {
+      <div class="card p-7 hover:-translate-y-1 transition-transform" [class.lg:col-span-2]="i === 0">
+        <div
+          class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/15 to-accent-secondary/15 flex items-center justify-center text-2xl mb-6 border border-line"
+        >
+          ✦
+        </div>
+        <h3 class="font-semibold text-lg mb-3">{{ service.title }}</h3>
+        <p class="text-sm text-text-muted leading-relaxed">{{ service.description }}</p>
+      </div>
+    }
+  </div>
+
+  <div class="card mt-16 p-10 sm:p-14 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent-secondary/5"></div>
+    <div class="relative">
+      <p class="section-label justify-center">Next step</p>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold mb-4">Ready to start?</h3>
+      <p class="text-text-muted mb-8 max-w-md mx-auto">Share your requirements — I'll reply with timeline, approach, and a clear quote.</p>
+      <a routerLink="/contact" class="btn-primary">Request a proposal</a>
+    </div>
+  </div>
+</section>

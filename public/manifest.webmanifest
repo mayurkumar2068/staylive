@@ -1,0 +1,16 @@
+{
+  "name": "Mayur Bobade Portfolio",
+  "short_name": "Mayur Bobade",
+  "description": "Full Stack Mobile & Web Developer Portfolio",
+  "theme_color": "#06060b",
+  "background_color": "#06060b",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

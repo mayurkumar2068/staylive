@@ -1,0 +1,22 @@
+<section id="achievements" class="relative section-padding">
+  <app-section-header
+    badge="Achievements"
+    title="Milestones & Impact"
+    subtitle="Delivering measurable results across industries"
+  />
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    @for (item of portfolio.achievements; track item.id) {
+      <div
+        appRevealOnScroll
+        [delay]="$index * 80"
+        class="relative glass rounded-3xl p-8 text-center overflow-hidden group hover:neon-glow transition-all"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-accent-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <p class="text-4xl md:text-5xl font-bold gradient-text mb-3 relative z-10">{{ item.value }}</p>
+        <h3 class="font-semibold text-lg mb-2 relative z-10">{{ item.title }}</h3>
+        <p class="text-text-muted text-sm relative z-10">{{ item.description }}</p>
+      </div>
+    }
+  </div>
+</section>

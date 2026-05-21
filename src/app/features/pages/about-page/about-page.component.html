@@ -1,0 +1,228 @@
+<app-page-hero
+  [label]="portfolio.pageMeta.about.label"
+  breadcrumb="About"
+  [title]="portfolio.pageMeta.about.title"
+  [description]="portfolio.pageMeta.about.description"
+/>
+
+<!-- Intro: photo + bio + quick facts -->
+<section class="page-container py-16 sm:py-20">
+  <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+    <!-- Photo column -->
+    <div class="lg:col-span-5 relative">
+      <div class="about-photo-deco about-photo-deco--tl"></div>
+      <div class="about-photo-deco about-photo-deco--br"></div>
+      <app-photo-frame
+        [src]="portfolio.photos.about"
+        alt="Mayur Bobade"
+        caption="Mayur Bobade"
+        location="Full Stack Developer"
+        [tall]="true"
+        objectPosition="center 15%"
+      />
+
+      <!-- Signature card -->
+      <div class="signature-card mt-5">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">Currently</p>
+            <p class="text-sm font-semibold text-text-primary mt-1">Open for new projects</p>
+          </div>
+          <a routerLink="/contact" class="signature-btn">
+            Say hi
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio + facts column -->
+    <div class="lg:col-span-7 space-y-6">
+      <!-- Lead paragraph card -->
+      <article class="bio-card">
+        <div class="bio-card-eyebrow">
+          <span class="bio-eyebrow-dot"></span>
+          A short story
+        </div>
+        <p class="text-text-muted leading-[1.85] text-base sm:text-[17px] whitespace-pre-line">{{ portfolio.aboutBio }}</p>
+      </article>
+
+      <!-- Quick facts strip -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="fact-tile">
+          <span class="fact-icon">◆</span>
+          <div>
+            <p class="fact-label">Based in</p>
+            <p class="fact-value">Bhopal, MP · India</p>
+          </div>
+        </div>
+        <div class="fact-tile">
+          <span class="fact-icon">◇</span>
+          <div>
+            <p class="fact-label">Working hours</p>
+            <p class="fact-value">10 AM – 8 PM IST</p>
+          </div>
+        </div>
+        <div class="fact-tile">
+          <span class="fact-icon">◎</span>
+          <div>
+            <p class="fact-label">Languages</p>
+            <p class="fact-value">English · Hindi · Marathi</p>
+          </div>
+        </div>
+        <div class="fact-tile">
+          <span class="fact-icon">✦</span>
+          <div>
+            <p class="fact-label">Top stack</p>
+            <p class="fact-value">Flutter · Angular · Firebase</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated stats -->
+      <div class="grid grid-cols-2 gap-4">
+        @for (stat of portfolio.stats; track stat.label) {
+          <div class="stat-card !p-5 text-center">
+            <p class="text-3xl font-bold gradient-text">{{ counters()[stat.label] || 0 }}{{ stat.suffix }}</p>
+            <p class="text-xs text-text-muted mt-2 tracking-wide">{{ stat.label }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote band -->
+<section class="quote-band">
+  <div class="page-container py-12 sm:py-16">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      I build software like a craftsman builds furniture — every joint matters, every surface is finished, and it should still feel right ten years from now.
+    </p>
+    <p class="quote-author">— Mayur Bobade</p>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="page-container py-20">
+  <div class="flex items-end justify-between mb-8 gap-4 flex-wrap">
+    <div>
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">Beyond the codebase</h2>
+      <p class="section-desc !mt-3">Exploring India — heritage, mountains, and the stories that shape how I build.</p>
+    </div>
+    <span class="chip chip-accent">{{ portfolio.photoGallery.length }} photos</span>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    @for (photo of portfolio.photoGallery; track photo.src; let i = $index) {
+      <div [class]="i === 0 ? 'sm:col-span-2 sm:row-span-2' : ''">
+        <app-photo-frame
+          [src]="photo.src"
+          [alt]="photo.alt"
+          [caption]="photo.caption"
+          [location]="photo.location || ''"
+          [tall]="i === 0"
+        />
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Awards & Certifications -->
+<section class="page-container pb-20">
+  <div class="grid lg:grid-cols-12 gap-8">
+    <div class="lg:col-span-5">
+      <p class="section-label">Recognition</p>
+      <h2 class="section-title heading-flare mb-4">Awards &amp; certifications</h2>
+      <p class="text-text-muted leading-relaxed">
+        Recognised twice with the <strong class="text-text-primary">Rising Star Award</strong> at MPSeDC
+        for single-handed ownership of citizen-scale Flutter apps. Certifications from Meta, IBM and Packt
+        in iOS development, Generative AI, and Advanced Flutter.
+      </p>
+    </div>
+    <div class="lg:col-span-7 space-y-3">
+      @for (award of portfolio.awards; track award.id) {
+        <div class="award-card">
+          <div class="award-icon">{{ award.icon }}</div>
+          <div class="flex-1">
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="font-semibold text-text-primary">{{ award.title }}</h3>
+              <span class="text-xs font-mono text-accent">{{ award.year }}</span>
+            </div>
+            <p class="text-xs text-text-subtle font-medium uppercase tracking-wider mt-1">{{ award.issuer }}</p>
+            <p class="text-sm text-text-muted mt-2 leading-relaxed">{{ award.description }}</p>
+          </div>
+        </div>
+      }
+      <div class="grid sm:grid-cols-2 gap-3 pt-4">
+        @for (cert of portfolio.certifications; track cert.id) {
+          <div class="cert-card">
+            <span class="cert-icon">{{ cert.icon }}</span>
+            <div>
+              <p class="text-sm font-semibold text-text-primary leading-tight">{{ cert.title }}</p>
+              <p class="text-[11px] uppercase tracking-wider text-text-subtle mt-1">{{ cert.issuer }} · {{ cert.year }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="page-container pb-20">
+  <p class="section-label">Timeline</p>
+  <h2 class="section-title mb-10">Career milestones</h2>
+  <div class="relative pl-2">
+    <div class="absolute left-[18px] top-3 bottom-3 w-px bg-gradient-to-b from-accent/60 via-accent-secondary/40 to-transparent"></div>
+    @for (item of portfolio.timeline; track item.year) {
+      <div class="relative pl-12 pb-6 last:pb-0">
+        <div class="timeline-dot">
+          <span></span>
+        </div>
+        <div class="card p-6 sm:p-7">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-accent font-mono text-xs font-bold tracking-wider">{{ item.year }}</span>
+            <span class="h-px flex-1 bg-line"></span>
+          </div>
+          <h3 class="font-semibold text-lg">{{ item.title }}</h3>
+          <p class="text-text-muted text-sm mt-1.5 leading-relaxed">{{ item.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Impact / achievements -->
+<section class="page-container pb-20">
+  <p class="section-label">Impact</p>
+  <h2 class="section-title mb-10">By the numbers</h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+    @for (item of portfolio.achievements; track item.id) {
+      <div class="impact-card">
+        <p class="text-4xl font-bold gradient-text">{{ item.value }}</p>
+        <h3 class="font-semibold mt-3">{{ item.title }}</h3>
+        <p class="text-xs text-text-subtle mt-1">{{ item.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-container pb-24">
+  <div class="about-cta">
+    <div class="about-cta-grid"></div>
+    <div class="relative text-center max-w-md mx-auto">
+      <p class="section-label justify-center">Let's talk</p>
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-text-primary mb-3 text-balance">
+        Got a product worth building?
+      </h2>
+      <p class="text-text-muted mb-7 text-sm leading-relaxed">
+        Tell me about the idea. I'll reply within 24 hours with a plan.
+      </p>
+      <a routerLink="/contact" class="btn-primary">Start the conversation</a>
+    </div>
+  </div>
+</section>

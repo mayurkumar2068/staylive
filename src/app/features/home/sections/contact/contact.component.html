@@ -1,0 +1,122 @@
+<section id="contact" class="relative section-padding">
+  <app-section-header
+    badge="Contact"
+    title="Let's Build Something Great"
+    subtitle="Have a project in mind? I'd love to hear about it."
+  />
+
+  <div class="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+    <div class="lg:col-span-2 space-y-6" appRevealOnScroll>
+      <div class="glass rounded-3xl p-6">
+        <h4 class="font-semibold mb-4">Get in Touch</h4>
+        <a [href]="'mailto:' + portfolio.profile.email" class="flex items-center gap-3 text-text-muted hover:text-accent transition-colors mb-4">
+          <span class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">✉</span>
+          {{ portfolio.profile.email }}
+        </a>
+        <a [href]="'tel:' + portfolio.profile.phone" class="flex items-center gap-3 text-text-muted hover:text-accent transition-colors mb-4">
+          <span class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">📞</span>
+          {{ portfolio.profile.phone }}
+        </a>
+        <p class="flex items-center gap-3 text-text-muted">
+          <span class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">📍</span>
+          {{ portfolio.profile.location }}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="https://wa.me/919876543210"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 min-w-[140px] glass rounded-2xl p-4 text-center hover:neon-glow transition-all group"
+        >
+          <span class="text-2xl block mb-2">💬</span>
+          <span class="text-sm font-medium group-hover:text-accent">WhatsApp</span>
+        </a>
+        <a
+          [href]="'mailto:' + portfolio.profile.email"
+          class="flex-1 min-w-[140px] glass rounded-2xl p-4 text-center hover:neon-glow transition-all group"
+        >
+          <span class="text-2xl block mb-2">✉️</span>
+          <span class="text-sm font-medium group-hover:text-accent">Email</span>
+        </a>
+      </div>
+
+      <div class="flex gap-3">
+        @for (social of portfolio.socialLinks; track social.name) {
+          <a
+            [href]="social.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-11 h-11 rounded-full glass flex items-center justify-center text-xs font-bold text-text-muted hover:text-accent transition-colors"
+          >
+            {{ social.icon.slice(0, 2).toUpperCase() }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="lg:col-span-3" appRevealOnScroll [delay]="150">
+      @if (submitted()) {
+        <div class="glass rounded-3xl p-12 text-center neon-glow success-animation">
+          <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6 text-4xl">✓</div>
+          <h3 class="text-2xl font-bold gradient-text mb-2">Message Sent!</h3>
+          <p class="text-text-muted">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+          <button (click)="submitted.set(false)" class="mt-6 text-accent text-sm hover:underline">Send another message</button>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="glass rounded-3xl p-8 space-y-6">
+          <div class="form-group">
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="form-input peer"
+              placeholder=" "
+            />
+            <label for="name" class="form-label">Your Name</label>
+            @if (form.controls.name.touched && form.controls.name.errors) {
+              <span class="text-red-400 text-xs mt-1">Name is required (min 2 chars)</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <input id="email" type="email" formControlName="email" class="form-input peer" placeholder=" " />
+            <label for="email" class="form-label">Email Address</label>
+            @if (form.controls.email.touched && form.controls.email.errors) {
+              <span class="text-red-400 text-xs mt-1">Valid email required</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <select id="projectType" formControlName="projectType" class="form-input peer">
+              <option value="" disabled selected>Select project type</option>
+              @for (type of projectTypes; track type) {
+                <option [value]="type">{{ type }}</option>
+              }
+            </select>
+            <label for="projectType" class="form-label">Project Type</label>
+          </div>
+
+          <div class="form-group">
+            <textarea
+              id="message"
+              formControlName="message"
+              rows="5"
+              class="form-input peer resize-none"
+              placeholder=" "
+            ></textarea>
+            <label for="message" class="form-label">Your Message</label>
+            @if (form.controls.message.touched && form.controls.message.errors) {
+              <span class="text-red-400 text-xs mt-1">Message required (min 10 chars)</span>
+            }
+          </div>
+
+          <app-button variant="primary" type="submit" [class.opacity-60]="submitting()">
+            {{ submitting() ? 'Sending...' : 'Send Message' }}
+          </app-button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 245, 255, 0.4);
+  border-radius: 50%;
+  left: calc(var(--i) * 5%);
+  top: calc(var(--i) * 4.5%);
+  animation: float calc(3s + var(--i) * 0.2s) ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.3s);
+}
+
+.floating-tech {
+  animation: float 4s ease-in-out infinite;
+}
+
+.code-window {
+  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+}

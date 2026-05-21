@@ -1,0 +1,81 @@
+<header class="fixed top-0 left-0 right-0 z-50">
+  <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-line-strong to-transparent opacity-60"></div>
+  <div class="site-header-bar">
+    <nav class="page-container flex items-center justify-between h-[4.25rem]">
+      <a routerLink="/" class="flex items-center gap-3 group" (click)="closeMobile()">
+        <span
+          class="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-accent via-accent-secondary to-accent-cyan flex items-center justify-center text-sm font-bold text-white shadow-glow-sm group-hover:scale-105 transition-transform"
+        >
+          M
+        </span>
+        <div class="hidden sm:block">
+          <span class="font-display font-semibold text-text-primary block leading-tight">Mayur Bobade</span>
+          <span class="text-[10px] text-text-subtle uppercase tracking-widest">Developer</span>
+        </div>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-0.5 p-1 rounded-2xl bg-bg-surface border border-line shadow-card">
+        @for (link of portfolio.navLinks; track link.id) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="nav-active"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="nav-link px-4 py-2 rounded-xl text-[13px] font-medium text-text-muted transition-all"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <button
+          type="button"
+          (click)="theme.toggle()"
+          class="theme-toggle"
+          [attr.aria-label]="'Theme: ' + theme.themeLabel() + '. Click to change.'"
+        >
+          <span class="theme-toggle-icon">{{ themeIcon() }}</span>
+          <span>{{ theme.themeLabel() }}</span>
+        </button>
+        <a routerLink="/contact" class="btn-primary !py-2.5 !px-5 !text-[13px]">Hire Me</a>
+      </div>
+
+      <button
+        class="lg:hidden w-10 h-10 rounded-xl border border-line bg-bg-surface flex flex-col items-center justify-center gap-1"
+        (click)="toggleMobile()"
+        aria-label="Menu"
+      >
+        <span class="w-5 h-0.5 bg-text-primary transition-all" [class.rotate-45]="mobileOpen()" [class.translate-y-1.5]="mobileOpen()"></span>
+        <span class="w-5 h-0.5 bg-text-primary transition-opacity" [class.opacity-0]="mobileOpen()"></span>
+        <span class="w-5 h-0.5 bg-text-primary transition-all" [class.-rotate-45]="mobileOpen()" [class.-translate-y-1.5]="mobileOpen()"></span>
+      </button>
+    </nav>
+  </div>
+
+  @if (mobileOpen()) {
+    <div class="lg:hidden border-b border-line bg-bg-secondary backdrop-blur-xl px-5 py-6">
+      <button type="button" (click)="theme.toggle()" class="theme-toggle w-full justify-center mb-4">
+        <span class="theme-toggle-icon">{{ themeIcon() }}</span>
+        <span>Theme: {{ theme.themeLabel() }}</span>
+      </button>
+      <ul class="flex flex-col gap-1">
+        @for (link of portfolio.navLinks; track link.id) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="nav-active-mobile"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              (click)="closeMobile()"
+              class="block px-4 py-3 rounded-2xl text-[15px] font-medium text-text-muted"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+      <a routerLink="/contact" (click)="closeMobile()" class="btn-primary w-full mt-5 justify-center">Hire Me</a>
+    </div>
+  }
+</header>

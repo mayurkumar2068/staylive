@@ -1,0 +1,49 @@
+<app-page-hero
+  [label]="portfolio.pageMeta.experience.label"
+  breadcrumb="Experience"
+  [title]="portfolio.pageMeta.experience.title"
+  [description]="portfolio.pageMeta.experience.description"
+/>
+
+<section class="page-container pb-24 max-w-4xl">
+  <div class="relative pl-2">
+    <div class="absolute left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-accent via-accent-secondary/50 to-transparent"></div>
+    @for (exp of portfolio.experiences; track exp.id) {
+      <div class="relative pl-12 pb-10 last:pb-0">
+        <div
+          class="absolute left-0 w-8 h-8 rounded-2xl bg-bg-primary border-2 border-accent/50 flex items-center justify-center shadow-glow-sm z-10"
+        >
+          <div class="w-2.5 h-2.5 rounded-full bg-accent-cyan"></div>
+        </div>
+        <div class="card p-7 sm:p-9">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span
+              class="chip text-[11px] capitalize"
+              [class.chip-accent]="exp.type === 'government'"
+            >
+              {{ exp.type }}
+            </span>
+            <span class="text-xs text-text-subtle font-mono">{{ exp.duration }}</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold">{{ exp.role }}</h3>
+          <p class="text-accent font-medium text-sm mt-1">{{ exp.company }}</p>
+          <p class="text-text-subtle text-xs mt-0.5">{{ exp.location }}</p>
+          <p class="text-text-muted text-sm mt-5 leading-relaxed">{{ exp.description }}</p>
+          <div class="flex flex-wrap gap-2 mt-5">
+            @for (tech of exp.technologies; track tech) {
+              <span class="chip text-[11px]">{{ tech }}</span>
+            }
+          </div>
+          <ul class="mt-6 space-y-2.5 pt-6 border-t border-line">
+            @for (a of exp.achievements; track a) {
+              <li class="text-sm text-text-muted flex gap-3">
+                <span class="text-accent-cyan shrink-0">→</span>
+                <span>{{ a }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    }
+  </div>
+</section>

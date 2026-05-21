@@ -1,0 +1,124 @@
+<section id="projects" class="relative section-padding">
+  <app-section-header
+    badge="Portfolio"
+    title="Featured Projects"
+    subtitle="Showcasing scalable applications across mobile, web, and enterprise"
+  />
+
+  <div class="flex flex-wrap justify-center gap-3 mb-12" appRevealOnScroll>
+    @for (cat of portfolio.projectCategories; track cat.id) {
+      <button
+        (click)="setCategory(cat.id)"
+        class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
+        [class]="portfolio.selectedCategory() === cat.id
+          ? 'bg-gradient-to-r from-accent to-accent-secondary text-bg-primary'
+          : 'glass text-text-muted hover:text-accent'"
+      >
+        {{ cat.label }}
+      </button>
+    }
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    @for (project of portfolio.filteredProjects(); track project.id) {
+      <article
+        appRevealOnScroll
+        [delay]="$index * 60"
+        appTiltCard
+        class="project-card group glass rounded-3xl overflow-hidden cursor-pointer relative"
+        (click)="openProject(project)"
+        (mousemove)="onCardMove($event, $any($event.currentTarget))"
+      >
+        <div
+          class="spotlight absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+          [style.background]="'radial-gradient(400px circle at ' + spotlightX() + '% ' + spotlightY() + '%, rgba(0,245,255,0.15), transparent 60%)'"
+        ></div>
+        @if (project.featured) {
+          <span class="absolute top-4 right-4 z-10 px-3 py-1 text-xs font-bold bg-accent/20 text-accent rounded-full">
+            Featured
+          </span>
+        }
+        <div class="relative h-52 overflow-hidden">
+          <img
+            [src]="project.image"
+            [alt]="project.title"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent"></div>
+        </div>
+        <div class="p-6 relative z-10">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{{ project.title }}</h3>
+          <p class="text-text-muted text-sm line-clamp-2 mb-4">{{ project.description }}</p>
+          <div class="flex flex-wrap gap-2">
+            @for (tech of project.techStack.slice(0, 3); track tech) {
+              <span class="text-xs px-2 py-1 glass rounded-lg text-accent/80">{{ tech }}</span>
+            }
+            @if (project.techStack.length > 3) {
+              <span class="text-xs text-text-muted">+{{ project.techStack.length - 3 }}</span>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+
+  @if (selectedProject(); as project) {
+    <div
+      class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      (click)="closeModal()"
+    >
+      <div
+        @modalAnimation
+        class="glass rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto hide-scrollbar neon-glow"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="relative h-64 md:h-80">
+          <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover rounded-t-3xl" />
+          <button
+            (click)="closeModal()"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center hover:text-accent"
+          >
+            ✕
+          </button>
+        </div>
+        <div class="p-8">
+          <h2 class="text-2xl font-bold gradient-text mb-2">{{ project.title }}</h2>
+          <p class="text-text-muted mb-6">{{ project.description }}</p>
+
+          <div class="mb-6">
+            <h4 class="font-semibold text-accent mb-2">Problem Solved</h4>
+            <p class="text-text-muted text-sm">{{ project.problem }}</p>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="font-semibold text-accent mb-2">Key Features</h4>
+            <ul class="grid sm:grid-cols-2 gap-2">
+              @for (feature of project.features; track feature) {
+                <li class="text-sm text-text-muted flex gap-2">
+                  <span class="text-accent">✓</span>{{ feature }}
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mb-8">
+            @for (tech of project.techStack; track tech) {
+              <span class="px-3 py-1 glass rounded-full text-sm text-accent">{{ tech }}</span>
+            }
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            @if (project.liveUrl) {
+              <app-button variant="primary" [href]="project.liveUrl" [external]="true">Live Demo</app-button>
+            }
+            @if (project.githubUrl) {
+              <app-button variant="outline" [href]="project.githubUrl" [external]="true">GitHub</app-button>
+            }
+            <app-button variant="secondary" (clicked)="closeModal()">Close</app-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>

@@ -1,0 +1,196 @@
+<app-page-hero
+  [label]="portfolio.pageMeta.projects.label"
+  breadcrumb="Projects"
+  [title]="portfolio.pageMeta.projects.title"
+  [description]="portfolio.pageMeta.projects.description"
+/>
+
+<section class="page-container pb-12 pt-2">
+  <!-- Filter pill bar -->
+  <div class="flex flex-wrap items-center gap-2 mb-12">
+    <div class="filter-bar">
+      @for (cat of portfolio.projectCategories; track cat.id) {
+        <button
+          (click)="setCategory(cat.id)"
+          class="filter-pill"
+          [class.is-active]="portfolio.selectedCategory() === cat.id"
+        >
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+    <span class="ml-auto chip chip-accent">{{ portfolio.filteredProjects().length }} projects</span>
+  </div>
+
+  <!-- Showcase grid: alternating large + small -->
+  <div class="space-y-7">
+    @for (project of portfolio.filteredProjects(); track project.id; let i = $index) {
+      <article
+        class="showcase-card neon-border"
+        appSpotlight
+        (click)="openProject(project)"
+        [class.showcase-card--flip]="i % 2 === 1"
+      >
+        <!-- Banner image -->
+        <div class="showcase-image">
+          <img [src]="project.image" [alt]="project.title" loading="lazy" />
+          <div class="showcase-image-gloss"></div>
+
+          <!-- Floating status pill -->
+          <div class="showcase-floating-top">
+            @switch (project.status) {
+              @case ('live') {
+                <span class="status-pill is-live">
+                  <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span> Live
+                </span>
+              }
+              @case ('in-development') {
+                <span class="status-pill is-dev">⚡ In Development</span>
+              }
+              @case ('case-study') {
+                <span class="status-pill is-case">◇ Case Study</span>
+              }
+            }
+            @if (project.featured) {
+              <span class="status-pill bg-bg-surface/80 text-text-primary border border-line">★ Featured</span>
+            }
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="showcase-body">
+          <div class="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] font-bold text-text-subtle mb-3">
+            <span>{{ project.year }}</span>
+            <span class="w-1 h-1 rounded-full bg-text-subtle/60"></span>
+            <span>{{ project.platform }}</span>
+            <span class="w-1 h-1 rounded-full bg-text-subtle/60"></span>
+            <span class="text-accent">{{ project.role }}</span>
+          </div>
+
+          <h3 class="showcase-title">{{ project.title }}</h3>
+          @if (project.tagline) {
+            <p class="showcase-tagline">{{ project.tagline }}</p>
+          }
+          <p class="text-text-muted leading-relaxed mt-4 max-w-xl">{{ project.description }}</p>
+
+          @if (project.metrics?.length) {
+            <div class="showcase-metrics">
+              @for (m of project.metrics; track m.label) {
+                <div class="showcase-metric">
+                  <p class="text-2xl font-bold gradient-text">{{ m.value }}</p>
+                  <p class="text-[10px] uppercase tracking-wider text-text-subtle mt-1">{{ m.label }}</p>
+                </div>
+              }
+            </div>
+          }
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            @for (tech of project.techStack.slice(0, 5); track tech) {
+              <span class="chip text-[11px]">{{ tech }}</span>
+            }
+            @if (project.techStack.length > 5) {
+              <span class="chip text-[11px]">+{{ project.techStack.length - 5 }}</span>
+            }
+          </div>
+
+          <div class="flex items-center gap-3 mt-7">
+            <button class="btn-primary text-sm" appMagnetic>
+              View case study
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+            @if (project.liveUrl && project.liveUrl !== '#') {
+              <a [href]="project.liveUrl" target="_blank" rel="noopener" (click)="$event.stopPropagation()" class="btn-ghost text-sm">Live →</a>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<!-- CTA strip -->
+<section class="page-container pb-24">
+  <div class="cta-strip neon-border">
+    <div class="cta-strip-inner">
+      <p class="section-label">Build with me</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-text-primary mb-3">Have a product in mind?</h2>
+      <p class="text-text-muted max-w-xl mb-8">Whether it's a Flutter MVP, an Angular dashboard or a full SaaS platform — I'd love to help you ship something premium.</p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a routerLink="/contact" class="btn-primary" appMagnetic>Start a project</a>
+        <a [href]="portfolio.profile.resumeUrl" target="_blank" class="btn-outline" appMagnetic>Download résumé</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project modal -->
+@if (selectedProject(); as project) {
+  <div class="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-xl" (click)="closeModal()">
+    <div @modalAnimation class="modal-card neon-border" (click)="$event.stopPropagation()">
+      <div class="relative">
+        <img [src]="project.image" [alt]="project.title" class="w-full aspect-[16/9] object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent"></div>
+        <button (click)="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-xl glass flex items-center justify-center text-text-primary hover:text-accent transition-colors">✕</button>
+        <div class="absolute bottom-5 left-6 flex items-center gap-2">
+          @switch (project.status) {
+            @case ('live') { <span class="status-pill is-live">● Live</span> }
+            @case ('in-development') { <span class="status-pill is-dev">⚡ In Development</span> }
+            @case ('case-study') { <span class="status-pill is-case">◇ Case Study</span> }
+          }
+        </div>
+      </div>
+      <div class="p-8 sm:p-10">
+        <div class="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] font-bold text-text-subtle mb-3">
+          <span>{{ project.year }}</span>
+          <span class="w-1 h-1 rounded-full bg-text-subtle/60"></span>
+          <span>{{ project.platform }}</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-2">{{ project.title }}</h2>
+        @if (project.tagline) { <p class="text-accent font-medium mb-5">{{ project.tagline }}</p> }
+        <p class="text-text-muted leading-relaxed mb-7">{{ project.description }}</p>
+
+        <div class="card-flat p-5 mb-7">
+          <p class="text-xs text-accent font-semibold uppercase tracking-wider mb-2">Challenge</p>
+          <p class="text-sm text-text-muted">{{ project.problem }}</p>
+        </div>
+
+        <p class="text-xs font-semibold text-text-subtle uppercase tracking-wider mb-3">Key features</p>
+        <ul class="grid sm:grid-cols-2 gap-2.5 mb-8">
+          @for (f of project.features; track f) {
+            <li class="text-sm text-text-muted flex gap-2 leading-relaxed">
+              <span class="text-accent shrink-0 mt-0.5">✓</span>{{ f }}
+            </li>
+          }
+        </ul>
+
+        @if (project.metrics?.length) {
+          <div class="grid grid-cols-3 gap-3 mb-8">
+            @for (m of project.metrics; track m.label) {
+              <div class="text-center p-4 rounded-2xl bg-bg-elevated/50 border border-line">
+                <p class="text-2xl font-bold gradient-text">{{ m.value }}</p>
+                <p class="text-[10px] uppercase tracking-wider text-text-subtle mt-1">{{ m.label }}</p>
+              </div>
+            }
+          </div>
+        }
+
+        <p class="text-xs font-semibold text-text-subtle uppercase tracking-wider mb-3">Tech stack</p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          @for (tech of project.techStack; track tech) {
+            <span class="chip chip-accent">{{ tech }}</span>
+          }
+        </div>
+
+        <div class="flex flex-wrap gap-3 pt-6 border-t border-line">
+          @if (project.liveUrl) {
+            <a [href]="project.liveUrl" target="_blank" class="btn-primary text-sm">Live demo</a>
+          }
+          @if (project.githubUrl) {
+            <a [href]="project.githubUrl" target="_blank" class="btn-outline text-sm">Source code</a>
+          }
+          <button (click)="closeModal()" class="btn-ghost text-sm ml-auto">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

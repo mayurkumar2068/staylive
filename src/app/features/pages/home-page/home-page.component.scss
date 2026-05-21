@@ -1,0 +1,325 @@
+/* Hero — fully contained, no overflow bugs */
+.hero-section {
+  overflow: hidden;
+}
+
+.hero-photo-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+  .hero-photo-wrap {
+    margin-right: 0;
+    max-width: none;
+  }
+}
+
+.hero-photo-glow {
+  position: absolute;
+  inset: -1rem;
+  background: linear-gradient(135deg, rgb(var(--accent) / 0.2), rgb(var(--accent-secondary) / 0.12));
+  border-radius: 1.75rem;
+  filter: blur(40px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hero-photo-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgb(var(--bg-surface));
+  box-shadow:
+    0 0 0 1px var(--line-strong),
+    var(--card-shadow);
+}
+
+.hero-photo-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.hero-photo-stats {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--hero-stats-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+}
+
+.hero-photo-divider {
+  width: 1px;
+  height: 2.5rem;
+  background: var(--line-strong);
+}
+
+/* Stat boxes — no hover jump */
+.stat-box {
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .stat-box {
+    text-align: left;
+  }
+}
+
+/* Project cards — simple, stable */
+.project-card {
+  display: block;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.project-card:hover {
+  border-color: rgb(var(--accent) / 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgb(var(--text-primary) / 0.04);
+}
+
+.project-card-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card-image img {
+  transform: scale(1.04);
+}
+
+.project-card-body {
+  padding: 1.25rem;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Value / service / testimonial / cta — stable boxes without ::before pseudo */
+.value-box,
+.service-box,
+.testimonial-box,
+.cta-box {
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.value-box:hover,
+.service-box:hover,
+.testimonial-box:hover {
+  border-color: rgb(var(--accent) / 0.2);
+  box-shadow: 0 12px 24px rgb(var(--text-primary) / 0.04);
+}
+
+.service-box {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.service-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  border-radius: 0.75rem;
+  background: rgb(var(--accent) / 0.1);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--accent-cyan));
+  font-size: 1.125rem;
+}
+
+.testimonial-box {
+  padding: 2rem;
+}
+
+.cta-box {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, rgb(var(--accent) / 0.08), rgb(var(--accent-secondary) / 0.05));
+  border-color: rgb(var(--accent) / 0.15);
+}
+
+/* ─── IST live clock pill ─── */
+.ist-clock-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  color: rgb(var(--text-muted));
+  box-shadow: var(--card-shadow);
+}
+
+.ist-clock-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--accent-cyan));
+  box-shadow: 0 0 8px rgb(var(--accent-cyan) / 0.7);
+  animation: ist-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ist-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* ─── Home project card (4 featured) ─── */
+.home-project-card {
+  display: block;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease,
+              border-color 0.4s ease;
+  position: relative;
+}
+
+.home-project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(var(--accent) / 0.25);
+  box-shadow:
+    0 24px 60px rgb(var(--accent) / 0.18),
+    0 0 0 1px rgb(var(--accent) / 0.18);
+}
+
+.home-project-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgb(var(--bg-elevated));
+}
+
+.home-project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-project-card:hover .home-project-image img {
+  transform: scale(1.06);
+}
+
+.home-project-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.home-project-body {
+  padding: 1.5rem;
+}
+
+/* ─── Awards row ─── */
+.award-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.award-card:hover {
+  border-color: rgb(var(--accent) / 0.3);
+  transform: translateX(4px);
+}
+
+.award-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgb(var(--accent) / 0.18), rgb(var(--accent-secondary) / 0.14));
+  border: 1px solid rgb(var(--accent) / 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--accent));
+  font-size: 22px;
+  box-shadow: 0 4px 14px rgb(var(--accent) / 0.18);
+}
+
+/* ─── Cert tile ─── */
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 1rem;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  transition: border-color 0.3s ease;
+}
+
+.cert-card:hover {
+  border-color: rgb(var(--accent) / 0.25);
+}
+
+.cert-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgb(var(--accent) / 0.1);
+  color: rgb(var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
