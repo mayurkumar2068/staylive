@@ -24,23 +24,14 @@ export const MAYUR_PHOTOS = {
   og: asset('images/mayur/hero-main.png'),
 } as const;
 
-/**
- * Drop screenshots in src/assets/images/projects/ with these filenames, then switch
- * each entry from the Unsplash placeholder to asset('images/projects/...').
- */
+/** Replace SVGs with PNG screenshots (same filenames) when you have app mockups. */
 const PROJECT_IMAGES = {
-  'stays-connect':
-    'https://images.unsplash.com/photo-1566073771259-6a8506097115?w=900&h=600&fit=crop&q=80',
-  'stays-matrix':
-    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=600&fit=crop&q=80',
-  attendox:
-    'https://images.unsplash.com/photo-1521737711862-ece3cc7ceb2b?w=900&h=600&fit=crop&q=80',
-  pulsefit:
-    'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50e?w=900&h=600&fit=crop&q=80',
-  novapay:
-    'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=900&h=600&fit=crop&q=80',
-  foodiehub:
-    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&h=600&fit=crop&q=80',
+  'stays-connect': asset('images/projects/project-stays-connect.svg'),
+  'stays-matrix': asset('images/projects/project-stays-matrix.svg'),
+  attendox: asset('images/projects/project-attendox.svg'),
+  pulsefit: asset('images/projects/project-pulsefit.svg'),
+  novapay: asset('images/projects/project-novapay.svg'),
+  foodiehub: asset('images/projects/project-foodiehub.svg'),
 } as const;
 
 export const PHOTO_GALLERY: GalleryPhoto[] = [

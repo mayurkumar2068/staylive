@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="Stays Connect">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <circle cx="720" cy="120" r="180" fill="#fff" opacity="0.06"/>
+  <circle cx="140" cy="480" r="220" fill="#fff" opacity="0.05"/>
+  <text x="450" y="280" text-anchor="middle" fill="#fff" font-family="system-ui,Segoe UI,sans-serif" font-size="52" font-weight="700">Stays Connect</text>
+  <text x="450" y="340" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="system-ui,sans-serif" font-size="22">Luxury hospitality · Flutter</text>
+</svg>
