@@ -29,7 +29,7 @@ export const EDUCATION: Education[] = [
     degree: 'B.Tech · Computer Science & Engineering',
     institution: 'Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)',
     location: 'Bhopal, Madhya Pradesh, India',
-    duration: '2014 — 2018',
+    duration: '2018 — 2022',
     cgpa: '8.28 / 10',
     highlights: [
       'Coursework in data structures, DBMS, operating systems, and software engineering',
@@ -154,7 +154,7 @@ export const STATS: Stat[] = [
   { label: 'Govt. Apps (MP)', value: 2, suffix: '', icon: 'building' },
 ];
 
-export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer from Bhopal, India, with a B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), where I graduated with 8.28 CGPA. Over 7+ years I've shipped production Flutter apps, Angular dashboards, and REST-backed platforms for government, enterprise, and my own products on GitHub (@${GITHUB.username} — ${GITHUB.publicRepos} public repositories).
+export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer from Bhopal, India, with a B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal (2018–2022), where I graduated with 8.28 CGPA. Over 7+ years I've shipped production Flutter apps, Angular dashboards, and REST-backed platforms for government, enterprise, and my own products on GitHub (@${GITHUB.username} — ${GITHUB.publicRepos} public repositories).
 
 I'm currently an Asst. Software Engineer at MPSeDC (Madhya Pradesh State Electronics Development Corporation), single-handedly owning citizen-scale apps MPeSeva and Sankat Ke Saathi for the Government of Madhya Pradesh. I've been recognised twice with the Rising Star Award for end-to-end delivery, security, and on-time releases.
 
@@ -162,15 +162,16 @@ Open-source and product work on GitHub includes Stays Connect (stayslive), Stays
 
 export const TIMELINE: TimelineItem[] = [
   {
-    year: '2018',
+    year: '2022',
     title: 'B.Tech · RGPV Bhopal',
     description:
-      'Completed B.Tech in Computer Science & Engineering from Rajiv Gandhi Proudyogiki Vishwavidyalaya with 8.28 CGPA. Started professional mobile development the same year.',
+      'Completed B.Tech in Computer Science & Engineering (2018–2022) from Rajiv Gandhi Proudyogiki Vishwavidyalaya with 8.28 CGPA.',
   },
   {
-    year: '2019',
+    year: '2022',
     title: 'Started Mobile Development',
-    description: 'Began Android (Java/Kotlin) development and transitioned to Flutter for cross-platform builds.',
+    description:
+      'After graduation, began Android (Java/Kotlin) work and moved into Flutter for cross-platform product builds.',
   },
   {
     year: '2022',
