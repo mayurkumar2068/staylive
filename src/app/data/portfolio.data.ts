@@ -24,14 +24,13 @@ export const MAYUR_PHOTOS = {
   og: asset('images/mayur/hero-main.png'),
 } as const;
 
-/** Replace SVGs with PNG screenshots (same filenames) when you have app mockups. */
 const PROJECT_IMAGES = {
-  'stays-connect': asset('images/projects/project-stays-connect.svg'),
-  'stays-matrix': asset('images/projects/project-stays-matrix.svg'),
-  attendox: asset('images/projects/project-attendox.svg'),
-  pulsefit: asset('images/projects/project-pulsefit.svg'),
-  novapay: asset('images/projects/project-novapay.svg'),
-  foodiehub: asset('images/projects/project-foodiehub.svg'),
+  'stays-connect': asset('images/projects/project-stays-connect.png'),
+  'stays-matrix': asset('images/projects/project-stays-matrix.png'),
+  attendox: asset('images/projects/project-attendox.png'),
+  pulsefit: asset('images/projects/project-pulsefit.png'),
+  novapay: asset('images/projects/project-novapay.png'),
+  foodiehub: asset('images/projects/project-foodiehub.png'),
 } as const;
 
 export const PHOTO_GALLERY: GalleryPhoto[] = [
