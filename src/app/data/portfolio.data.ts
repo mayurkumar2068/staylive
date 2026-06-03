@@ -13,14 +13,34 @@ import {
   TimelineItem,
   GalleryPhoto,
 } from '../models/portfolio.models';
+import { asset } from '../utils/asset-url';
 
 /** Mayur's real photos — stored in src/assets/images/mayur */
 export const MAYUR_PHOTOS = {
-  hero: '/assets/images/mayur/hero-main.png',
-  heroAlt: '/assets/images/mayur/hero-alt.png',
-  about: '/assets/images/mayur/about-profile.png',
-  aboutTravel: '/assets/images/mayur/about-travel.png',
-  og: '/assets/images/mayur/hero-main.png',
+  hero: asset('images/mayur/hero-main.png'),
+  heroAlt: asset('images/mayur/hero-alt.png'),
+  about: asset('images/mayur/about-profile.png'),
+  aboutTravel: asset('images/mayur/about-travel.png'),
+  og: asset('images/mayur/hero-main.png'),
+} as const;
+
+/**
+ * Drop screenshots in src/assets/images/projects/ with these filenames, then switch
+ * each entry from the Unsplash placeholder to asset('images/projects/...').
+ */
+const PROJECT_IMAGES = {
+  'stays-connect':
+    'https://images.unsplash.com/photo-1566073771259-6a8506097115?w=900&h=600&fit=crop&q=80',
+  'stays-matrix':
+    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=600&fit=crop&q=80',
+  attendox:
+    'https://images.unsplash.com/photo-1521737711862-ece3cc7ceb2b?w=900&h=600&fit=crop&q=80',
+  pulsefit:
+    'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50e?w=900&h=600&fit=crop&q=80',
+  novapay:
+    'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=900&h=600&fit=crop&q=80',
+  foodiehub:
+    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&h=600&fit=crop&q=80',
 } as const;
 
 export const PHOTO_GALLERY: GalleryPhoto[] = [
@@ -52,19 +72,19 @@ export const PHOTO_GALLERY: GalleryPhoto[] = [
     location: 'India',
   },
   {
-    src: '/assets/images/mayur/gallery-delhi.png',
+    src: asset('images/mayur/gallery-delhi.png'),
     alt: 'Mayur Bobade at Central Vista Delhi',
     caption: 'Central Vista',
     location: 'New Delhi',
   },
   {
-    src: '/assets/images/mayur/gallery-mountains.png',
+    src: asset('images/mayur/gallery-mountains.png'),
     alt: 'Mayur Bobade in the mountains',
     caption: 'Mountain retreat',
     location: 'Himachal Pradesh',
   },
   {
-    src: '/assets/images/mayur/gallery-snow.png',
+    src: asset('images/mayur/gallery-snow.png'),
     alt: 'Mayur Bobade in snow landscape',
     caption: 'Winter expedition',
     location: 'Snow peaks, India',
@@ -318,8 +338,8 @@ export const PROJECTS: Project[] = [
     ],
     category: 'mobile',
     techStack: ['Flutter', 'Dart', 'Firebase', 'REST APIs', 'Node.js', 'Provider'],
-    image: '/assets/images/projects/project-stays-connect.png',
-    images: ['/assets/images/projects/project-stays-connect.png'],
+    image: PROJECT_IMAGES['stays-connect'],
+    images: [PROJECT_IMAGES['stays-connect']],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
@@ -352,8 +372,8 @@ export const PROJECTS: Project[] = [
     ],
     category: 'saas',
     techStack: ['Angular', 'TypeScript', 'Firebase', 'Node.js', 'MongoDB', 'Tailwind'],
-    image: '/assets/images/projects/project-stays-matrix.png',
-    images: ['/assets/images/projects/project-stays-matrix.png'],
+    image: PROJECT_IMAGES['stays-matrix'],
+    images: [PROJECT_IMAGES['stays-matrix']],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
@@ -386,8 +406,8 @@ export const PROJECTS: Project[] = [
     ],
     category: 'fullstack',
     techStack: ['Flutter', 'Angular', 'Firebase', 'Node.js', 'MongoDB', 'Biometric Auth'],
-    image: '/assets/images/projects/project-attendox.png',
-    images: ['/assets/images/projects/project-attendox.png'],
+    image: PROJECT_IMAGES.attendox,
+    images: [PROJECT_IMAGES.attendox],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
@@ -420,8 +440,8 @@ export const PROJECTS: Project[] = [
     ],
     category: 'flutter',
     techStack: ['Flutter', 'Dart', 'Firebase', 'HealthKit', 'Google Fit', 'BLoC'],
-    image: '/assets/images/projects/project-pulsefit.png',
-    images: ['/assets/images/projects/project-pulsefit.png'],
+    image: PROJECT_IMAGES.pulsefit,
+    images: [PROJECT_IMAGES.pulsefit],
     liveUrl: '#',
     githubUrl: '#',
     featured: true,
@@ -454,8 +474,8 @@ export const PROJECTS: Project[] = [
     ],
     category: 'fintech',
     techStack: ['Flutter', 'Dart', 'Firebase', 'REST APIs', 'JWT', 'Biometric Auth'],
-    image: '/assets/images/projects/project-novapay.png',
-    images: ['/assets/images/projects/project-novapay.png'],
+    image: PROJECT_IMAGES.novapay,
+    images: [PROJECT_IMAGES.novapay],
     liveUrl: '#',
     githubUrl: '#',
     featured: false,
@@ -488,8 +508,8 @@ export const PROJECTS: Project[] = [
     ],
     category: 'mobile',
     techStack: ['Flutter', 'Dart', 'Firebase', 'Google Maps', 'REST APIs', 'Stripe / Razorpay'],
-    image: '/assets/images/projects/project-foodiehub.png',
-    images: ['/assets/images/projects/project-foodiehub.png'],
+    image: PROJECT_IMAGES.foodiehub,
+    images: [PROJECT_IMAGES.foodiehub],
     liveUrl: '#',
     githubUrl: '#',
     featured: false,
