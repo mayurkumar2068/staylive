@@ -5,9 +5,9 @@
   [description]="portfolio.pageMeta.projects.description"
 />
 
-<section class="page-container pb-12 pt-2">
+<section class="page-container projects-page-section pb-12 pt-2">
   <!-- Filter pill bar -->
-  <div class="flex flex-wrap items-center gap-2 mb-12">
+  <div class="projects-toolbar">
     <div class="filter-bar">
       @for (cat of portfolio.projectCategories; track cat.id) {
         <button
@@ -19,11 +19,20 @@
         </button>
       }
     </div>
-    <span class="ml-auto chip chip-accent">{{ portfolio.filteredProjects().length }} projects</span>
+    <span class="ml-auto chip chip-accent">{{ portfolio.filteredProjects().length }} showcased</span>
+    <a
+      [href]="portfolio.github.profileUrl"
+      target="_blank"
+      rel="noopener"
+      class="chip hover:border-accent/40 transition-colors"
+      (click)="$event.stopPropagation()"
+    >
+      GitHub · {{ portfolio.github.publicRepos }} repos ↗
+    </a>
   </div>
 
   <!-- Showcase grid: alternating large + small -->
-  <div class="space-y-7">
+  <div class="showcase-list">
     @for (project of portfolio.filteredProjects(); track project.id; let i = $index) {
       <article
         class="showcase-card neon-border"
@@ -59,7 +68,7 @@
 
         <!-- Body -->
         <div class="showcase-body">
-          <div class="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] font-bold text-text-subtle mb-3">
+          <div class="showcase-meta">
             <span>{{ project.year }}</span>
             <span class="w-1 h-1 rounded-full bg-text-subtle/60"></span>
             <span>{{ project.platform }}</span>
@@ -71,7 +80,7 @@
           @if (project.tagline) {
             <p class="showcase-tagline">{{ project.tagline }}</p>
           }
-          <p class="text-text-muted leading-relaxed mt-4 max-w-xl">{{ project.description }}</p>
+          <p class="showcase-description">{{ project.description }}</p>
 
           @if (project.metrics?.length) {
             <div class="showcase-metrics">
@@ -84,7 +93,7 @@
             </div>
           }
 
-          <div class="flex flex-wrap gap-2 mt-6">
+          <div class="showcase-tech">
             @for (tech of project.techStack.slice(0, 5); track tech) {
               <span class="chip text-[11px]">{{ tech }}</span>
             }
@@ -93,13 +102,16 @@
             }
           </div>
 
-          <div class="flex items-center gap-3 mt-7">
+          <div class="showcase-actions">
             <button class="btn-primary text-sm" appMagnetic>
               View case study
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
-            @if (project.liveUrl && project.liveUrl !== '#') {
+            @if (project.liveUrl) {
               <a [href]="project.liveUrl" target="_blank" rel="noopener" (click)="$event.stopPropagation()" class="btn-ghost text-sm">Live →</a>
+            }
+            @if (project.githubUrl) {
+              <a [href]="project.githubUrl" target="_blank" rel="noopener" (click)="$event.stopPropagation()" class="btn-ghost text-sm">GitHub ↗</a>
             }
           </div>
         </div>

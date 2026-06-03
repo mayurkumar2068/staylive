@@ -21,6 +21,8 @@ import {
   FLOATING_TECH,
   MAYUR_PHOTOS,
   PHOTO_GALLERY,
+  EDUCATION,
+  GITHUB,
 } from '../data/portfolio.data';
 import { PAGE_META, VALUE_PROPS, PROCESS_STEPS, SPECIALIZATIONS } from '../data/content.data';
 import { ProjectCategory } from '../models/portfolio.models';
@@ -52,6 +54,8 @@ export class PortfolioService {
   readonly specializations = SPECIALIZATIONS;
   readonly awards = AWARDS;
   readonly certifications = CERTIFICATIONS;
+  readonly education = EDUCATION;
+  readonly github = GITHUB;
   readonly featuredProjects = this.projects.filter((p) => p.featured);
 
   readonly selectedCategory = signal<ProjectCategory>('all');

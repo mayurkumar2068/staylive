@@ -8,7 +8,7 @@ export const PAGE_META = {
     label: 'About',
     title: 'Engineering with clarity & craft',
     description:
-      'Seven years turning complex ideas into polished Flutter apps, Angular platforms, and enterprise systems — for government, startups, and global clients.',
+      'B.Tech (RGPV, 8.28 CGPA), 7+ years shipping Flutter & Angular products, and 21 open GitHub repositories you can inspect today.',
   },
   skills: {
     label: 'Expertise',
@@ -26,7 +26,7 @@ export const PAGE_META = {
     label: 'Work',
     title: 'Projects & case studies',
     description:
-      'Selected builds spanning citizen apps, analytics dashboards, e-commerce, healthcare, and logistics APIs.',
+      'Each card links to a real GitHub repository on @mayurkumar2068 — 21 public repos and counting.',
   },
   services: {
     label: 'Services',

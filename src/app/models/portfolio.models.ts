@@ -123,6 +123,22 @@ export interface TimelineItem {
   description: string;
 }
 
+export interface Education {
+  id: string;
+  degree: string;
+  institution: string;
+  location: string;
+  duration: string;
+  cgpa: string;
+  highlights: string[];
+}
+
+export interface GitHubProfile {
+  username: string;
+  profileUrl: string;
+  publicRepos: number;
+}
+
 export interface ContactForm {
   name: string;
   email: string;

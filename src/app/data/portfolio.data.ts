@@ -12,8 +12,31 @@ import {
   Testimonial,
   TimelineItem,
   GalleryPhoto,
+  Education,
+  GitHubProfile,
 } from '../models/portfolio.models';
 import { asset } from '../utils/asset-url';
+
+export const GITHUB: GitHubProfile = {
+  username: 'mayurkumar2068',
+  profileUrl: 'https://github.com/mayurkumar2068',
+  publicRepos: 21,
+};
+
+export const EDUCATION: Education[] = [
+  {
+    id: 'edu-rgpv',
+    degree: 'B.Tech · Computer Science & Engineering',
+    institution: 'Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)',
+    location: 'Bhopal, Madhya Pradesh, India',
+    duration: '2014 — 2018',
+    cgpa: '8.28 / 10',
+    highlights: [
+      'Coursework in data structures, DBMS, operating systems, and software engineering',
+      'Graduation project and lab work focused on Android and full-stack fundamentals',
+    ],
+  },
+];
 
 /** Mayur's real photos — stored in src/assets/images/mayur */
 export const MAYUR_PHOTOS = {
@@ -126,20 +149,26 @@ export const HERO_TYPING_PHRASES = [
 
 export const STATS: Stat[] = [
   { label: 'Years Experience', value: 7, suffix: '+', icon: 'calendar' },
-  { label: 'Projects Delivered', value: 50, suffix: '+', icon: 'folder' },
-  { label: 'Mobile Apps', value: 25, suffix: '+', icon: 'smartphone' },
-  { label: 'Government Projects', value: 8, suffix: '+', icon: 'building' },
+  { label: 'GitHub Repositories', value: GITHUB.publicRepos, suffix: '', icon: 'github' },
+  { label: 'CGPA (RGPV)', value: 8, suffix: '.28', icon: 'graduation' },
+  { label: 'Govt. Apps (MP)', value: 2, suffix: '', icon: 'building' },
 ];
 
-export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer based in Bhopal, India, with 7+ years building production-grade mobile and web applications. I'm currently an Asst. Software Engineer at MPSeDC (Madhya Pradesh State Electronics Development Corporation), where I single-handedly own large-scale Flutter apps that serve millions of citizens — MPeSeva and Sankat Ke Saathi.
+export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer from Bhopal, India, with a B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), where I graduated with 8.28 CGPA. Over 7+ years I've shipped production Flutter apps, Angular dashboards, and REST-backed platforms for government, enterprise, and my own products on GitHub (@${GITHUB.username} — ${GITHUB.publicRepos} public repositories).
 
-My craft is end-to-end ownership: Flutter & Dart for cross-platform mobile, Angular & TypeScript for dashboards and admin panels, and rock-solid backends with Firebase, Node.js, REST APIs, and clean architecture. I've been recognised twice with the Rising Star Award at MPSeDC for single-handed ownership and timely delivery.
+I'm currently an Asst. Software Engineer at MPSeDC (Madhya Pradesh State Electronics Development Corporation), single-handedly owning citizen-scale apps MPeSeva and Sankat Ke Saathi for the Government of Madhya Pradesh. I've been recognised twice with the Rising Star Award for end-to-end delivery, security, and on-time releases.
 
-Beyond my day job I build personal SaaS products — Stays Connect (hospitality booking), Stays Matrix (operations analytics), AttendoX (workforce HRMS) — exploring how modern UI, AI insights, and motion design come together. When you work with me, you get a partner who thinks like a product engineer, not someone who just closes tickets.`;
+Open-source and product work on GitHub includes Stays Connect (stayslive), Stays Matrix (StayMatrixDev), this Angular portfolio (staylive), MagTapp AI Browser, and more — each repo linked from the Projects section. When you work with me, you get someone who ships real code you can review, not slide-deck promises.`;
 
 export const TIMELINE: TimelineItem[] = [
   {
     year: '2018',
+    title: 'B.Tech · RGPV Bhopal',
+    description:
+      'Completed B.Tech in Computer Science & Engineering from Rajiv Gandhi Proudyogiki Vishwavidyalaya with 8.28 CGPA. Started professional mobile development the same year.',
+  },
+  {
+    year: '2019',
     title: 'Started Mobile Development',
     description: 'Began Android (Java/Kotlin) development and transitioned to Flutter for cross-platform builds.',
   },
@@ -301,8 +330,8 @@ export const EXPERIENCES: Experience[] = [
       'Built Android (Java/Kotlin) apps, Flutter MVPs, Angular dashboards and REST integrations for startups and SMBs across India, the US and the Middle East.',
     technologies: ['Flutter', 'Android', 'Kotlin', 'Java', 'Angular', 'Firebase', 'MySQL'],
     achievements: [
-      'Launched 15+ apps on Play Store & App Store with 4.8★ average rating',
-      'Delivered MVPs for 5+ early-stage startups including e-commerce & SaaS',
+      'Shipped Flutter & Android MVPs published to Play Store',
+      'Built e-commerce, weather, and utility apps — several open on GitHub',
       'Maintained long-term retainers with international clients',
     ],
     type: 'freelance',
@@ -330,18 +359,18 @@ export const PROJECTS: Project[] = [
     techStack: ['Flutter', 'Dart', 'Firebase', 'REST APIs', 'Node.js', 'Provider'],
     image: PROJECT_IMAGES['stays-connect'],
     images: [PROJECT_IMAGES['stays-connect']],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: undefined,
+    githubUrl: `${GITHUB.profileUrl}/stayslive`,
     featured: true,
-    year: '2026',
+    year: '2025',
     role: 'Founder · Full Stack',
     platform: 'iOS · Android',
     accent: 'from-indigo-500 to-fuchsia-500',
     status: 'in-development',
     metrics: [
-      { label: 'Avg. rating', value: '4.8★' },
-      { label: 'Booking flow', value: '< 60 s' },
-      { label: 'Properties', value: '120+' },
+      { label: 'GitHub', value: 'stayslive' },
+      { label: 'Stack', value: 'Flutter' },
+      { label: 'Repos', value: `${GITHUB.publicRepos}` },
     ],
   },
   {
@@ -364,18 +393,18 @@ export const PROJECTS: Project[] = [
     techStack: ['Angular', 'TypeScript', 'Firebase', 'Node.js', 'MongoDB', 'Tailwind'],
     image: PROJECT_IMAGES['stays-matrix'],
     images: [PROJECT_IMAGES['stays-matrix']],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: undefined,
+    githubUrl: `${GITHUB.profileUrl}/StayMatrixDev`,
     featured: true,
-    year: '2026',
+    year: '2025',
     role: 'Founder · Full Stack',
     platform: 'Web · Desktop',
     accent: 'from-cyan-500 to-violet-500',
     status: 'in-development',
     metrics: [
-      { label: 'Live KPIs', value: '24+' },
-      { label: 'Data refresh', value: '< 2 s' },
-      { label: 'Role types', value: '7' },
+      { label: 'GitHub', value: 'StayMatrixDev' },
+      { label: 'Stack', value: 'JavaScript' },
+      { label: 'Type', value: 'SaaS ops' },
     ],
   },
   {
@@ -398,52 +427,51 @@ export const PROJECTS: Project[] = [
     techStack: ['Flutter', 'Angular', 'Firebase', 'Node.js', 'MongoDB', 'Biometric Auth'],
     image: PROJECT_IMAGES.attendox,
     images: [PROJECT_IMAGES.attendox],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: undefined,
+    githubUrl: `${GITHUB.profileUrl}/stayconnect`,
     featured: true,
     year: '2025',
     role: 'Solo Builder',
     platform: 'iOS · Android · Web',
     accent: 'from-emerald-500 to-cyan-500',
-    status: 'live',
+    status: 'in-development',
     metrics: [
-      { label: 'Employees', value: '500+' },
-      { label: 'Branches', value: '12' },
-      { label: 'Accuracy', value: '99.4%' },
+      { label: 'GitHub', value: 'stayconnect' },
+      { label: 'Stack', value: 'TypeScript' },
+      { label: 'Focus', value: 'HRMS' },
     ],
   },
   {
     id: 'pulsefit',
-    title: 'PulseFit',
-    tagline: 'Your Pulse. Your Progress.',
+    title: 'MagTapp AI Browser',
+    tagline: 'Multi-tab browser + on-device AI tools.',
     description:
-      'A Flutter fitness & wellness app with AI-personalised workouts, real-time heart-rate tracking, hydration & nutrition logging, and a beautifully animated activity ring system.',
+      'Cross-platform Flutter app combining a multi-tab WebView browser with AI document summarisation, translation, and local file management — built with scalable architecture and efficient state management.',
     problem:
-      'Fitness apps either feel like fitness trackers OR coaching apps — never both. PulseFit blends real-time metrics with an AI coach in one cinematic UI.',
+      'Users needed one mobile app for browsing, summarising documents, and translating content without switching between three separate tools.',
     features: [
-      'AI-generated personalised workout plans',
-      'Real-time heart-rate, calories & steps',
-      'Animated activity rings & streak system',
-      'Yoga / HIIT / Strength / Cardio / Meditation libraries',
-      'Hydration, nutrition & sleep tracking',
-      'Apple HealthKit & Google Fit sync',
+      'Multi-tab WebView browser with performant navigation',
+      'AI-powered document summarisation & translation',
+      'Local file management & offline-friendly flows',
+      'Clean architecture with testable state layers',
+      'Native integrations for platform WebView features',
     ],
     category: 'flutter',
-    techStack: ['Flutter', 'Dart', 'Firebase', 'HealthKit', 'Google Fit', 'BLoC'],
+    techStack: ['Flutter', 'Dart', 'WebView', 'AI APIs', 'BLoC', 'Clean Architecture'],
     image: PROJECT_IMAGES.pulsefit,
     images: [PROJECT_IMAGES.pulsefit],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: undefined,
+    githubUrl: `${GITHUB.profileUrl}/magtapp_ai_browser`,
     featured: true,
-    year: '2025',
+    year: '2024',
     role: 'Solo Builder',
     platform: 'iOS · Android',
     accent: 'from-pink-500 to-cyan-500',
     status: 'live',
     metrics: [
-      { label: 'Workouts', value: '120+' },
-      { label: 'Streak users', value: '4.2k' },
-      { label: 'Rating', value: '4.9★' },
+      { label: 'GitHub', value: 'magtapp_ai_browser' },
+      { label: 'Stack', value: 'Flutter' },
+      { label: 'Focus', value: 'AI + WebView' },
     ],
   },
   {
@@ -466,18 +494,18 @@ export const PROJECTS: Project[] = [
     techStack: ['Flutter', 'Dart', 'Firebase', 'REST APIs', 'JWT', 'Biometric Auth'],
     image: PROJECT_IMAGES.novapay,
     images: [PROJECT_IMAGES.novapay],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: undefined,
+    githubUrl: `${GITHUB.profileUrl}/emi_locker_app`,
     featured: false,
-    year: '2025',
+    year: '2024',
     role: 'Solo Builder',
     platform: 'iOS · Android',
     accent: 'from-violet-500 to-fuchsia-500',
     status: 'case-study',
     metrics: [
-      { label: 'Avg. payment', value: '< 3 s' },
-      { label: 'Categories', value: '8' },
-      { label: 'Security', value: 'AES-256' },
+      { label: 'GitHub', value: 'emi_locker_app' },
+      { label: 'Stack', value: 'Flutter' },
+      { label: 'Focus', value: 'FinTech' },
     ],
   },
   {
@@ -500,18 +528,50 @@ export const PROJECTS: Project[] = [
     techStack: ['Flutter', 'Dart', 'Firebase', 'Google Maps', 'REST APIs', 'Stripe / Razorpay'],
     image: PROJECT_IMAGES.foodiehub,
     images: [PROJECT_IMAGES.foodiehub],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: undefined,
+    githubUrl: `${GITHUB.profileUrl}/ecommerce`,
     featured: false,
-    year: '2024',
-    role: 'Founder · Full Stack',
+    year: '2023',
+    role: 'Solo Builder',
     platform: 'iOS · Android',
     accent: 'from-orange-500 to-pink-500',
     status: 'case-study',
     metrics: [
-      { label: 'Restaurants', value: '1k+' },
-      { label: 'Avg. ETA', value: '< 30 m' },
-      { label: 'Repeat users', value: '63%' },
+      { label: 'GitHub', value: 'ecommerce' },
+      { label: 'Stack', value: 'Flutter' },
+      { label: 'Focus', value: 'E-commerce' },
+    ],
+  },
+  {
+    id: 'staylive-portfolio',
+    title: 'Staylive Portfolio',
+    tagline: 'This site — Angular on GitHub Pages.',
+    description:
+      'Open-source personal portfolio built with Angular 21, Tailwind, GSAP, and GitHub Actions CI/CD — deployed to GitHub Pages at /staylive.',
+    problem:
+      'Needed a fast, recruiter-ready portfolio with real project links and verifiable education stats.',
+    features: [
+      'Angular 21 standalone components & lazy routes',
+      'GitHub Pages deploy via GitHub Actions',
+      'Responsive dark / light themes',
+      'Real stats: GitHub repo count, RGPV CGPA, MP govt apps',
+    ],
+    category: 'angular',
+    techStack: ['Angular', 'TypeScript', 'Tailwind CSS', 'GitHub Actions'],
+    image: PROJECT_IMAGES['stays-matrix'],
+    images: [PROJECT_IMAGES['stays-matrix']],
+    liveUrl: 'https://mayurkumar2068.github.io/staylive/',
+    githubUrl: `${GITHUB.profileUrl}/staylive`,
+    featured: false,
+    year: '2026',
+    role: 'Author',
+    platform: 'Web',
+    accent: 'from-indigo-500 to-cyan-500',
+    status: 'live',
+    metrics: [
+      { label: 'GitHub', value: 'staylive' },
+      { label: 'Stack', value: 'Angular' },
+      { label: 'Deploy', value: 'GH Pages' },
     ],
   },
 ];
@@ -632,8 +692,8 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'a1', title: 'Apps Launched', description: 'Published on Play Store & App Store', value: '25+', icon: 'rocket' },
-  { id: 'a2', title: 'Govt. Citizens Served', description: 'Across MP via MPeSeva & Sankat Ke Saathi', value: '1M+', icon: 'shield' },
+  { id: 'a1', title: 'GitHub Repositories', description: `Public repos on @${GITHUB.username}`, value: `${GITHUB.publicRepos}`, icon: 'github' },
+  { id: 'a2', title: 'RGPV CGPA', description: 'B.Tech CSE · Rajiv Gandhi Proudyogiki Vishwavidyalaya', value: '8.28', icon: 'graduation' },
   { id: 'a3', title: 'Rising Star Awards', description: 'Recognised twice at MPSeDC', value: '2×', icon: 'award' },
   { id: 'a4', title: 'Years of Experience', description: 'Flutter, Angular & Full Stack', value: '7+', icon: 'star' },
 ];

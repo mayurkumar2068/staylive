@@ -49,6 +49,24 @@
         <p class="text-text-muted leading-[1.85] text-base sm:text-[17px] whitespace-pre-line">{{ portfolio.aboutBio }}</p>
       </article>
 
+      <!-- Education -->
+      @for (edu of portfolio.education; track edu.id) {
+        <article class="education-card">
+          <div class="education-card-header">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">Education</p>
+            <span class="education-cgpa">{{ edu.cgpa }}</span>
+          </div>
+          <h3 class="text-lg font-bold text-text-primary mt-2">{{ edu.degree }}</h3>
+          <p class="text-sm font-medium text-text-primary/90 mt-1">{{ edu.institution }}</p>
+          <p class="text-xs text-text-muted mt-1">{{ edu.location }} · {{ edu.duration }}</p>
+          <ul class="education-highlights">
+            @for (point of edu.highlights; track point) {
+              <li>{{ point }}</li>
+            }
+          </ul>
+        </article>
+      }
+
       <!-- Quick facts strip -->
       <div class="grid grid-cols-2 gap-3">
         <div class="fact-tile">
@@ -61,8 +79,12 @@
         <div class="fact-tile">
           <span class="fact-icon">◇</span>
           <div>
-            <p class="fact-label">Working hours</p>
-            <p class="fact-value">10 AM – 8 PM IST</p>
+            <p class="fact-label">GitHub</p>
+            <p class="fact-value">
+              <a [href]="portfolio.github.profileUrl" target="_blank" rel="noopener" class="hover:text-accent transition-colors">
+                {{ portfolio.github.publicRepos }} public repos
+              </a>
+            </p>
           </div>
         </div>
         <div class="fact-tile">

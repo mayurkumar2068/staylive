@@ -75,6 +75,46 @@
   }
 }
 
+.education-card {
+  padding: 1.5rem 1.625rem;
+  border-radius: 1.375rem;
+  background: rgb(var(--bg-surface));
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+
+.education-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.education-cgpa {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  color: rgb(var(--accent));
+  background: rgb(var(--accent) / 0.1);
+  border: 1px solid rgb(var(--accent) / 0.25);
+}
+
+.education-highlights {
+  margin: 1rem 0 0;
+  padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgb(var(--text-muted));
+  }
+}
+
 .bio-card-eyebrow {
   display: inline-flex;
   align-items: center;
