@@ -19,7 +19,7 @@
     }
   </div>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div class="projects-grid">
     @for (project of portfolio.filteredProjects(); track project.id) {
       <article
         appRevealOnScroll
@@ -38,19 +38,19 @@
             Featured
           </span>
         }
-        <div class="relative h-52 overflow-hidden">
+        <div class="project-card-media">
           <img
             [src]="project.image"
             [alt]="project.title"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent"></div>
+          <div class="project-card-media-fade"></div>
         </div>
-        <div class="p-6 relative z-10">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{{ project.title }}</h3>
-          <p class="text-text-muted text-sm line-clamp-2 mb-4">{{ project.description }}</p>
-          <div class="flex flex-wrap gap-2">
+        <div class="project-card-content">
+          <h3 class="project-card-title">{{ project.title }}</h3>
+          <p class="project-card-desc line-clamp-2">{{ project.description }}</p>
+          <div class="project-card-tags">
             @for (tech of project.techStack.slice(0, 3); track tech) {
               <span class="text-xs px-2 py-1 glass rounded-lg text-accent/80">{{ tech }}</span>
             }

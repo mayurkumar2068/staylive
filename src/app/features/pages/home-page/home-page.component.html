@@ -132,7 +132,7 @@
     </a>
   </div>
 
-  <div class="grid lg:grid-cols-2 gap-6">
+  <div class="home-projects-grid">
     @for (project of featuredProjects; track project.id) {
       <a [routerLink]="['/projects']" class="home-project-card neon-border" appSpotlight>
         <div class="home-project-image">

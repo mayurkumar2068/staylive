@@ -652,11 +652,11 @@ export const SERVICES: Service[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
-    name: 'Sr. Project Lead',
-    role: 'Project Director',
-    company: 'MPSeDC · Govt. of Madhya Pradesh',
+    name: 'Mayur Bobade',
+    role: 'Self Full Stack Developer',
+    company: 'Stays Connect',
     content:
-      'Mayur owned MPeSeva end-to-end and delivered ahead of schedule with exceptional quality. His Flutter expertise, security focus and stakeholder communication are outstanding.',
+      'Mayur owned Stays Connect end-to-end and delivered ahead of schedule with exceptional quality. His Flutter expertise, security focus and stakeholder communication are outstanding.',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
   },
