@@ -27,10 +27,10 @@
           {{ portfolio.profile.title }}
         </p>
 
-        <p class="text-text-muted leading-relaxed mb-6 max-w-md text-base">
-          Award-winning <strong class="text-text-primary font-medium">Flutter</strong> engineer building production
-          mobile apps for the Govt. of MP, plus <strong class="text-text-primary font-medium">Angular</strong> dashboards
-          &amp; SaaS products for global clients.
+        <p class="text-text-muted leading-relaxed mb-6 max-w-md text-body">
+          <strong class="text-text-primary font-medium">Flutter</strong> engineer at MPSeDC (Rising Star ×2), building
+          government mobile apps plus <strong class="text-text-primary font-medium">Angular</strong> tools and
+          {{ portfolio.github.publicRepos }} open-source repos on GitHub.
         </p>
 
         <p class="inline-flex items-center gap-2 text-sm text-accent-cyan font-mono mb-8 px-4 py-2 rounded-xl bg-accent/5 border border-accent/15">
@@ -76,20 +76,17 @@
             fetchpriority="high"
           />
           <div class="hero-photo-stats">
-            <div>
-              <p class="text-2xl font-bold gradient-text">{{ portfolio.profile.yearsExperience }}+</p>
-              <p class="text-[11px] text-text-subtle uppercase tracking-wide">Years</p>
-            </div>
-            <div class="hero-photo-divider"></div>
-            <div>
-              <p class="text-2xl font-bold gradient-text">2×</p>
-              <p class="text-[11px] text-text-subtle uppercase tracking-wide">Awards</p>
-            </div>
-            <div class="hero-photo-divider"></div>
-            <div>
-              <p class="text-2xl font-bold gradient-text">1M+</p>
-              <p class="text-[11px] text-text-subtle uppercase tracking-wide">Users</p>
-            </div>
+            @for (stat of portfolio.profile.heroStats; track stat.label; let last = $last) {
+              <div class="hero-photo-stat">
+                <p class="hero-photo-stat-value gradient-text">
+                  {{ stat.value }}{{ stat.suffix || '' }}
+                </p>
+                <p class="hero-photo-stat-label">{{ stat.label }}</p>
+              </div>
+              @if (!last) {
+                <div class="hero-photo-divider" aria-hidden="true"></div>
+              }
+            }
           </div>
         </div>
       </div>
@@ -180,7 +177,7 @@
         <p class="section-label">Recognition</p>
         <h2 class="section-title heading-flare mb-4">Awards &amp; certifications</h2>
         <p class="text-text-muted leading-relaxed">
-          Recognised twice at MPSeDC for single-handed ownership and on-time delivery of citizen-scale Flutter apps,
+          Recognised twice at MPSeDC (2024, 2025) for Flutter delivery on MPeSeva and Sankat Ke Saathi,
           with certifications from Meta, IBM, and Packt.
         </p>
       </div>

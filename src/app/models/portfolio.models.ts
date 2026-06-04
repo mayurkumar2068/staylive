@@ -106,7 +106,14 @@ export interface Testimonial {
   company: string;
   content: string;
   rating: number;
-  avatar: string;
+  /** Omit for role-based attribution (initials avatar). */
+  avatar?: string;
+}
+
+export interface HeroStat {
+  value: number | string;
+  suffix?: string;
+  label: string;
 }
 
 export interface Achievement {

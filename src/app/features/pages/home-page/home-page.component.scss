@@ -54,7 +54,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.25rem;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
   border-radius: 1rem;
   background: var(--hero-stats-bg);
   backdrop-filter: blur(16px);
@@ -62,9 +63,32 @@
   box-shadow: var(--card-shadow);
 }
 
+.hero-photo-stat {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.hero-photo-stat-value {
+  font-size: clamp(1.125rem, 4vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hero-photo-stat-label {
+  margin: 0.25rem 0 0;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(var(--text-subtle));
+}
+
 .hero-photo-divider {
   width: 1px;
-  height: 2.5rem;
+  height: 2rem;
+  flex-shrink: 0;
   background: var(--line-strong);
 }
 

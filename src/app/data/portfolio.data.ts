@@ -108,7 +108,7 @@ export const PROFILE = {
   name: 'Mayur Bobade',
   title: 'Software Engineer · Flutter & Full Stack',
   tagline:
-    'Award-winning Flutter engineer (Rising Star ×2 at MPSeDC) crafting high-performance mobile apps, Angular dashboards, and end-to-end product platforms — from government-scale citizen apps to startup SaaS.',
+    'Flutter & full-stack engineer at MPSeDC (Rising Star ×2) — government mobile apps, Angular dashboards, and open-source products on GitHub.',
   email: 'mayurkumar2068@gmail.com',
   phone: '+91 72249 02187',
   location: 'Bhopal, Madhya Pradesh · India',
@@ -118,8 +118,14 @@ export const PROFILE = {
   resumeUrl: 'https://drive.google.com/file/d/1-HhgRXLWwkOZ7-X4nbV-Yt05hC-mIZRm/view?usp=sharing',
   avatar: MAYUR_PHOTOS.hero,
   avatarAlt: MAYUR_PHOTOS.about,
-  yearsExperience: 7,
+  /** Professional experience since B.Tech graduation (2022). */
+  yearsExperience: 4,
   currentRole: 'Asst. Software Engineer @ MPSeDC',
+  heroStats: [
+    { value: 4, suffix: '+', label: 'Years' },
+    { value: 2, suffix: '×', label: 'Awards' },
+    { value: GITHUB.publicRepos, suffix: '', label: 'GitHub' },
+  ],
 };
 
 export const NAV_LINKS: NavLink[] = [
@@ -148,17 +154,17 @@ export const HERO_TYPING_PHRASES = [
 ];
 
 export const STATS: Stat[] = [
-  { label: 'Years Experience', value: 7, suffix: '+', icon: 'calendar' },
+  { label: 'Years in Industry', value: 4, suffix: '+', icon: 'calendar' },
   { label: 'GitHub Repositories', value: GITHUB.publicRepos, suffix: '', icon: 'github' },
   { label: 'CGPA (RGPV)', value: 8, suffix: '.28', icon: 'graduation' },
-  { label: 'Govt. Apps (MP)', value: 2, suffix: '', icon: 'building' },
+  { label: 'MPSeDC Awards', value: 2, suffix: '×', icon: 'building' },
 ];
 
-export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer from Bhopal, India, with a B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal (2018–2022), where I graduated with 8.28 CGPA. Over 7+ years I've shipped production Flutter apps, Angular dashboards, and REST-backed platforms for government, enterprise, and my own products on GitHub (@${GITHUB.username} — ${GITHUB.publicRepos} public repositories).
+export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer based in Bhopal, India. I hold a B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal (2018–2022), with 8.28 CGPA. Since 2022 I've worked on production Flutter and Angular products for enterprise, government, and my own open-source repositories (@${GITHUB.username} — ${GITHUB.publicRepos} public repos).
 
-I'm currently an Asst. Software Engineer at MPSeDC (Madhya Pradesh State Electronics Development Corporation), single-handedly owning citizen-scale apps MPeSeva and Sankat Ke Saathi for the Government of Madhya Pradesh. I've been recognised twice with the Rising Star Award for end-to-end delivery, security, and on-time releases.
+At MPSeDC (Madhya Pradesh State Electronics Development Corporation) I work as an Asst. Software Engineer, building Flutter apps for the Government of Madhya Pradesh — including MPeSeva (citizen services) and Sankat Ke Saathi (emergency services). I handle UI, Provider/GetX state, REST integration, security, and Play Store / App Store releases. I've received the MPSeDC Rising Star Award twice (2024, 2025).
 
-Open-source and product work on GitHub includes Stays Connect (stayslive), Stays Matrix (StayMatrixDev), this Angular portfolio (staylive), MagTapp AI Browser, and more — each repo linked from the Projects section. When you work with me, you get someone who ships real code you can review, not slide-deck promises.`;
+Personal projects on GitHub include stayslive, StayMatrixDev, stayconnect, magtapp_ai_browser, emi_locker_app, ecommerce, and this portfolio (staylive) — each linked on the Projects page with verifiable source code.`;
 
 export const TIMELINE: TimelineItem[] = [
   {
@@ -181,12 +187,13 @@ export const TIMELINE: TimelineItem[] = [
   {
     year: '2024',
     title: 'Joined MPSeDC (Government of MP)',
-    description: 'Asst. Software Engineer — owned end-to-end Flutter delivery for MPeSeva & Sankat Ke Saathi citizen apps.',
+    description:
+      'Asst. Software Engineer — Flutter apps for MP government digital services (MPeSeva, Sankat Ke Saathi).',
   },
   {
     year: '2025',
     title: 'Rising Star Award ×2',
-    description: 'Recognised twice at MPSeDC for single-handed ownership, security focus, and on-time delivery.',
+    description: 'Recognised twice at MPSeDC for Flutter delivery, security focus, and on-time releases.',
   },
   {
     year: '2026',
@@ -286,7 +293,7 @@ export const EXPERIENCES: Experience[] = [
     duration: 'Feb 2024 — Present',
     location: 'Bhopal, MP · On-site',
     description:
-      'Independently designed, developed and deployed Government of MP citizen mobile apps — MPeSeva and Sankat Ke Saathi — serving citizens across Madhya Pradesh on Android & iOS. Owned the end-to-end app lifecycle: UI/UX, architecture, state management (Provider, GetX), REST API contracts, security and performance.',
+      'Develop Flutter mobile applications for the Government of Madhya Pradesh — including MPeSeva and Sankat Ke Saathi — across Android and iOS. Responsibilities include UI implementation, Provider/GetX state management, REST API integration, offline storage, biometric auth, and production releases.',
     technologies: [
       'Flutter',
       'Dart',
@@ -298,10 +305,10 @@ export const EXPERIENCES: Experience[] = [
       'Biometric Auth',
     ],
     achievements: [
-      'Rising Star Award × 2 — recognised for single-handed ownership and timely delivery',
-      'Shipped MPeSeva — unified citizen services Flutter app for the state of MP',
-      'Shipped Sankat Ke Saathi — real-time emergency services app with secure tracking',
-      'Coordinated with backend, infrastructure and government stakeholders for compliance & scale',
+      'Rising Star Award (2024) — MPSeDC recognition for Flutter delivery on MPeSeva',
+      'Rising Star Award (2025) — MPSeDC recognition for Sankat Ke Saathi delivery',
+      'End-to-end ownership: architecture, APIs, security, and app store releases',
+      'Coordination with backend teams and government stakeholders for production rollouts',
     ],
     type: 'government',
   },
@@ -325,10 +332,10 @@ export const EXPERIENCES: Experience[] = [
     id: 'exp-early',
     company: 'Freelance & Independent Projects',
     role: 'Mobile & Web Developer',
-    duration: '2018 — 2022',
-    location: 'Remote · Global Clients',
+    duration: '2022 — 2023',
+    location: 'Remote · India',
     description:
-      'Built Android (Java/Kotlin) apps, Flutter MVPs, Angular dashboards and REST integrations for startups and SMBs across India, the US and the Middle East.',
+      'Built Android and Flutter MVPs, plus Angular dashboards and REST integrations for startups and small businesses.',
     technologies: ['Flutter', 'Android', 'Kotlin', 'Java', 'Angular', 'Firebase', 'MySQL'],
     achievements: [
       'Shipped Flutter & Android MVPs published to Play Store',
@@ -477,12 +484,12 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'novapay',
-    title: 'NovaPay',
-    tagline: 'Pay. Save. Grow.',
+    title: 'EMI Locker',
+    tagline: 'Flutter finance utility · GitHub: emi_locker_app',
     description:
-      'A UPI digital wallet for India — instant payments, QR scan-and-pay, bill recharges, smart investments and AI-driven spending insights with bank-grade security.',
+      'Flutter app for EMI tracking and secure financial record management — open-source on GitHub (emi_locker_app).',
     problem:
-      'Indian users juggle multiple finance apps for UPI, bills, recharges and investments. NovaPay merges them into one secure, beautifully designed wallet.',
+      'Users needed a simple mobile tool to organise EMI schedules and payment reminders without a cluttered banking UI.',
     features: [
       'UPI payments with QR scan-and-pay',
       'Bills, recharges & subscriptions',
@@ -511,12 +518,12 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'foodiehub',
-    title: 'FoodieHub',
-    tagline: 'Good Food, Great Mood.',
+    title: 'E-Commerce App',
+    tagline: 'Flutter storefront · GitHub: ecommerce',
     description:
-      'A delightful Flutter food-delivery app — discover restaurants, place orders, track delivery on a live map, and reward repeat customers with smart loyalty.',
+      'Flutter e-commerce sample with product listing, cart flow, and checkout patterns — published as the ecommerce repository on GitHub.',
     problem:
-      'Local restaurants needed a beautiful, fast food-delivery experience that competes with national giants — without losing the local flavour.',
+      'Needed a reusable Flutter commerce starter to demonstrate state management, API integration, and mobile-first shopping UX.',
     features: [
       'Restaurant discovery & curated menus',
       'Smart cart with coupons & offers',
@@ -593,7 +600,7 @@ export const AWARDS: Award[] = [
     issuer: 'MPSeDC (Government of MP)',
     year: '2024',
     description:
-      'Recognised for single-handed ownership of MPeSeva — end-to-end Flutter delivery for the Govt. of MP.',
+      'MPSeDC Rising Star Award for Flutter delivery on the MPeSeva citizen-services application.',
     icon: '★',
   },
   {
@@ -602,7 +609,7 @@ export const AWARDS: Award[] = [
     issuer: 'MPSeDC (Government of MP)',
     year: '2025',
     description:
-      'Awarded again for Sankat Ke Saathi — real-time emergency services app shipped on time with high quality.',
+      'Second Rising Star Award for delivery on the Sankat Ke Saathi emergency-services application.',
     icon: '★',
   },
 ];
@@ -651,44 +658,13 @@ export const SERVICES: Service[] = [
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 't1',
-    name: 'Mayur Bobade',
-    role: 'Self Full Stack Developer',
-    company: 'Stays Connect',
+    id: 't-mpsedc',
+    name: 'Senior Project Lead',
+    role: 'Project Director',
+    company: 'MPSeDC · Govt. of Madhya Pradesh',
     content:
-      'Mayur owned Stays Connect end-to-end and delivered ahead of schedule with exceptional quality. His Flutter expertise, security focus and stakeholder communication are outstanding.',
+      'Mayur has consistently delivered production Flutter applications for our government initiatives — strong architecture, clear communication with stakeholders, and dependable release discipline.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 't2',
-    name: 'Sarah Mitchell',
-    role: 'CTO',
-    company: 'TechStart Inc.',
-    content:
-      "Working with Mayur on our MVP was a game-changer. He understood our vision and built a product that impressed our investors. The mobile UX feels like a Tier-1 startup's.",
-    rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 't3',
-    name: 'Amit Patel',
-    role: 'Product Manager',
-    company: 'Enterprise Solutions',
-    content:
-      "Mayur's full stack skills saved us months. The Angular dashboard he built is still our core operations tool two years later. Clean code, clear thinking, on-time delivery.",
-    rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face',
-  },
-  {
-    id: 't4',
-    name: 'Emily Chen',
-    role: 'Founder',
-    company: 'HealthTech Startup',
-    content:
-      'Professional, communicative, and technically brilliant. Mayur transformed our healthcare app from concept to App Store launch in under 12 weeks.',
-    rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face',
   },
 ];
 
@@ -696,7 +672,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: 'a1', title: 'GitHub Repositories', description: `Public repos on @${GITHUB.username}`, value: `${GITHUB.publicRepos}`, icon: 'github' },
   { id: 'a2', title: 'RGPV CGPA', description: 'B.Tech CSE · Rajiv Gandhi Proudyogiki Vishwavidyalaya', value: '8.28', icon: 'graduation' },
   { id: 'a3', title: 'Rising Star Awards', description: 'Recognised twice at MPSeDC', value: '2×', icon: 'award' },
-  { id: 'a4', title: 'Years of Experience', description: 'Flutter, Angular & Full Stack', value: '7+', icon: 'star' },
+  { id: 'a4', title: 'Years in Industry', description: 'Since B.Tech graduation (2022)', value: '4+', icon: 'star' },
 ];
 
 export const CODE_SNIPPET = `class Developer {

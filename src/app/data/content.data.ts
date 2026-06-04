@@ -8,7 +8,7 @@ export const PAGE_META = {
     label: 'About',
     title: 'Engineering with clarity & craft',
     description:
-      'B.Tech (RGPV, 8.28 CGPA), 7+ years shipping Flutter & Angular products, and 21 open GitHub repositories you can inspect today.',
+      'B.Tech (RGPV, 8.28 CGPA), 4+ years in industry since 2022, and 21 open GitHub repositories you can inspect today.',
   },
   skills: {
     label: 'Expertise',
