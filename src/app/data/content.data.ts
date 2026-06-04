@@ -1,70 +1,70 @@
 export const PAGE_META = {
   home: {
     label: 'Portfolio',
-    title: 'Full Stack Developer',
-    description: 'Crafting premium mobile & web experiences',
+    title: 'Mayur Bobade',
+    description: 'My personal portfolio — Flutter, Angular, and full-stack development',
   },
   about: {
-    label: 'About',
-    title: 'Engineering with clarity & craft',
+    label: 'About me',
+    title: 'Who I am & what I build',
     description:
-      'B.Tech (RGPV, 8.28 CGPA), 4+ years in industry since 2022, and 21 open GitHub repositories you can inspect today.',
+      'My story: B.Tech from RGPV (8.28 CGPA), 4+ years in industry since 2022, and 21 GitHub repos you can review.',
   },
   skills: {
-    label: 'Expertise',
-    title: 'Skills & technology stack',
+    label: 'My skills',
+    title: 'Technologies I use daily',
     description:
-      'From pixel-perfect UI to secure APIs — a battle-tested stack built for performance, maintainability, and scale.',
+      'The stack I rely on for mobile, web, APIs, security, and shipping production apps.',
   },
   experience: {
-    label: 'Career',
-    title: 'Professional journey',
+    label: 'My career',
+    title: 'Where I have worked',
     description:
-      'Government platforms, enterprise dashboards, and startup MVPs — delivering measurable impact at every stage.',
+      'My path from RGPV graduation to MPSeDC, enterprise iOS work, and freelance projects.',
   },
   projects: {
-    label: 'Work',
-    title: 'Projects & case studies',
+    label: 'My work',
+    title: 'Projects I have built',
     description:
-      'Each card links to a real GitHub repository on @mayurkumar2068 — 21 public repos and counting.',
+      'Each project links to my GitHub (@mayurkumar2068) — real code, not mockups.',
   },
   services: {
     label: 'Services',
-    title: 'How I can help you',
+    title: 'What I can build for you',
     description:
-      'End-to-end product development — from architecture and design to deployment and long-term support.',
+      'If you need a Flutter app, Angular dashboard, or full-stack product — this is how I can help.',
   },
   contact: {
     label: 'Contact',
-    title: "Let's build something remarkable",
+    title: "Let's connect",
     description:
-      'Tell me about your product vision. I respond within 24 hours — ready for freelance, contract, or full-time.',
+      'Share your idea or role. I usually reply within 24 hours for freelance, contract, or full-time opportunities.',
   },
 } as const;
 
 export const VALUE_PROPS = [
   {
     title: 'Production-grade code',
-    description: 'Clean architecture, typed APIs, and maintainable codebases that scale with your team.',
+    description: 'I write clean architecture, typed APIs, and codebases that are easy to maintain.',
     icon: '◈',
   },
   {
     title: 'Design-led delivery',
-    description: 'Interfaces that feel premium — smooth motion, accessibility, and recruiter-ready polish.',
+    description: 'I care about motion, accessibility, and interfaces that feel intentional.',
     icon: '◇',
   },
   {
     title: 'Ship on schedule',
-    description: 'Clear milestones, proactive communication, and a track record of on-time launches.',
+    description: 'I communicate clearly, set realistic milestones, and deliver on time.',
     icon: '◎',
   },
 ];
 
 export const PROCESS_STEPS = [
-  { step: '01', title: 'Discover', desc: 'Understand goals, users, and technical constraints.' },
-  { step: '02', title: 'Design', desc: 'Wireframes, architecture, and stack decisions.' },
-  { step: '03', title: 'Build', desc: 'Iterative development with regular demos.' },
-  { step: '04', title: 'Launch', desc: 'Deploy, optimize, and hand off with documentation.' },
+  { step: '01', title: 'Discover', desc: 'I understand your goals, users, and constraints.' },
+  { step: '02', title: 'Design', desc: 'I plan architecture, UI flow, and tech choices with you.' },
+  { step: '03', title: 'Build', desc: 'I ship in iterations with demos so you see progress early.' },
+  { step: '04', title: 'Launch', desc: 'I deploy, document, and support a smooth handoff.' },
 ];
 
 export const SPECIALIZATIONS = [

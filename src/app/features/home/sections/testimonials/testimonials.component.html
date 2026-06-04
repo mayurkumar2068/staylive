@@ -1,45 +1,49 @@
-<section id="testimonials" class="relative section-padding overflow-hidden">
-  <app-section-header
-    badge="Testimonials"
-    title="Client Voices"
-    subtitle="Professional feedback from government project leadership"
-  />
+@if (portfolio.testimonials.length) {
+  <section id="testimonials" class="relative section-padding overflow-hidden">
+    <app-section-header
+      badge="Testimonials"
+      title="Client Voices"
+      subtitle="Professional feedback from project leadership"
+    />
 
-  <div class="relative max-w-4xl mx-auto">
-    @for (t of portfolio.testimonials; track t.id; let i = $index) {
-      <div
-        class="glass rounded-3xl p-8 md:p-12 text-center transition-all duration-500 absolute inset-0"
-        [class.opacity-100]="activeIndex() === i"
-        [class.opacity-0]="activeIndex() !== i"
-        [class.pointer-events-none]="activeIndex() !== i"
-        [class.z-10]="activeIndex() === i"
-      >
-        <div class="flex justify-center gap-1 mb-6">
-          @for (star of [1,2,3,4,5]; track star) {
-            <span class="text-accent text-xl">★</span>
+    <div class="relative max-w-4xl mx-auto">
+      @for (t of portfolio.testimonials; track t.id; let i = $index) {
+        <div
+          class="glass rounded-3xl p-8 md:p-12 text-center transition-all duration-500 absolute inset-0"
+          [class.opacity-100]="activeIndex() === i"
+          [class.opacity-0]="activeIndex() !== i"
+          [class.pointer-events-none]="activeIndex() !== i"
+          [class.z-10]="activeIndex() === i"
+        >
+          <div class="flex justify-center gap-1 mb-6">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+              <span class="text-accent text-xl">★</span>
+            }
+          </div>
+          <p class="testimonial-quote">"{{ t.content }}"</p>
+          @if (t.avatar) {
+            <img [src]="t.avatar" [alt]="t.name" class="testimonial-avatar" />
+          } @else {
+            <div class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">MP</div>
           }
+          <h4 class="font-semibold text-lg">{{ t.name }}</h4>
+          <p class="text-text-muted text-sm">{{ t.role }} · {{ t.company }}</p>
         </div>
-        <p class="testimonial-quote">"{{ t.content }}"</p>
-        @if (t.avatar) {
-          <img [src]="t.avatar" [alt]="t.name" class="testimonial-avatar" />
-        } @else {
-          <div class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">MP</div>
+      }
+      <div class="h-[320px] md:h-[280px]"></div>
+    </div>
+
+    @if (portfolio.testimonials.length > 1) {
+      <div class="flex justify-center gap-2 mt-8">
+        @for (t of portfolio.testimonials; track t.id; let i = $index) {
+          <button
+            (click)="setIndex(i)"
+            class="w-2 h-2 rounded-full transition-all"
+            [class]="activeIndex() === i ? 'bg-accent w-8' : 'bg-line-strong'"
+            [attr.aria-label]="'Testimonial ' + (i + 1)"
+          ></button>
         }
-        <h4 class="font-semibold text-lg">{{ t.name }}</h4>
-        <p class="text-text-muted text-sm">{{ t.role }} · {{ t.company }}</p>
       </div>
     }
-    <div class="h-[320px] md:h-[280px]"></div>
-  </div>
-
-  <div class="flex justify-center gap-2 mt-8">
-    @for (t of portfolio.testimonials; track t.id; let i = $index) {
-      <button
-        (click)="setIndex(i)"
-        class="w-2 h-2 rounded-full transition-all"
-        [class]="activeIndex() === i ? 'bg-accent w-8' : 'bg-line-strong'"
-        [attr.aria-label]="'Testimonial ' + (i + 1)"
-      ></button>
-    }
-  </div>
-</section>
+  </section>
+}

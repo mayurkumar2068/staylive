@@ -108,7 +108,7 @@ export const PROFILE = {
   name: 'Mayur Bobade',
   title: 'Software Engineer · Flutter & Full Stack',
   tagline:
-    'Flutter & full-stack engineer at MPSeDC (Rising Star ×2) — government mobile apps, Angular dashboards, and open-source products on GitHub.',
+    'I build Flutter & full-stack apps at MPSeDC (Rising Star ×2), ship government mobile products, and maintain open-source work on GitHub.',
   email: 'mayurkumar2068@gmail.com',
   phone: '+91 72249 02187',
   location: 'Bhopal, Madhya Pradesh · India',
@@ -160,45 +160,49 @@ export const STATS: Stat[] = [
   { label: 'MPSeDC Awards', value: 2, suffix: '×', icon: 'building' },
 ];
 
-export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer based in Bhopal, India. I hold a B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal (2018–2022), with 8.28 CGPA. Since 2022 I've worked on production Flutter and Angular products for enterprise, government, and my own open-source repositories (@${GITHUB.username} — ${GITHUB.publicRepos} public repos).
+export const ABOUT_BIO = `I'm Mayur Bobade — a Software Engineer from Bhopal, India. This site is my personal portfolio: my education, work, projects, and the code I actually ship.
 
-At MPSeDC (Madhya Pradesh State Electronics Development Corporation) I work as an Asst. Software Engineer, building Flutter apps for the Government of Madhya Pradesh — including MPeSeva (citizen services) and Sankat Ke Saathi (emergency services). I handle UI, Provider/GetX state, REST integration, security, and Play Store / App Store releases. I've received the MPSeDC Rising Star Award twice (2024, 2025).
+I completed my B.Tech in Computer Science from Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal (2018–2022), with 8.28 CGPA. Since 2022 I've been building production Flutter and Angular apps for enterprise clients, the Government of Madhya Pradesh, and my own GitHub repositories (@${GITHUB.username} — ${GITHUB.publicRepos} public repos).
 
-Personal projects on GitHub include stayslive, StayMatrixDev, stayconnect, magtapp_ai_browser, emi_locker_app, ecommerce, and this portfolio (staylive) — each linked on the Projects page with verifiable source code.`;
+Today I'm an Asst. Software Engineer at MPSeDC, where I develop Flutter applications such as MPeSeva (citizen services) and Sankat Ke Saathi (emergency services). I own UI, Provider/GetX state, REST APIs, security, and Play Store / App Store releases. I received the MPSeDC Rising Star Award in 2024 and 2025.
+
+On the side I maintain personal repos including stayslive, StayMatrixDev, stayconnect, magtapp_ai_browser, emi_locker_app, ecommerce, and this portfolio (staylive) — all linked on my Projects page.`;
 
 export const TIMELINE: TimelineItem[] = [
   {
     year: '2022',
     title: 'B.Tech · RGPV Bhopal',
     description:
-      'Completed B.Tech in Computer Science & Engineering (2018–2022) from Rajiv Gandhi Proudyogiki Vishwavidyalaya with 8.28 CGPA.',
+      'I completed my B.Tech in Computer Science & Engineering (2018–2022) from RGPV with 8.28 CGPA.',
   },
   {
     year: '2022',
-    title: 'Started Mobile Development',
+    title: 'Started my dev career',
     description:
-      'After graduation, began Android (Java/Kotlin) work and moved into Flutter for cross-platform product builds.',
+      'After graduation I began with Android (Java/Kotlin) and moved into Flutter for cross-platform apps.',
   },
   {
-    year: '2022',
-    title: 'Joined 12Th Wonder Research (Pune)',
-    description: 'iOS Software Engineer — Swift/UIKit on enterprise projects (Titan, Wonder Health) with HealthKit & Core Animation.',
+    year: '2023',
+    title: '12Th Wonder Research · Pune',
+    description:
+      'I worked as an iOS engineer (Swift/UIKit) on Titan and Wonder Health, with HealthKit and Core Animation.',
   },
   {
     year: '2024',
-    title: 'Joined MPSeDC (Government of MP)',
+    title: 'Joined MPSeDC',
     description:
-      'Asst. Software Engineer — Flutter apps for MP government digital services (MPeSeva, Sankat Ke Saathi).',
+      'I joined as Asst. Software Engineer and started delivering Flutter apps for MP government services.',
   },
   {
     year: '2025',
     title: 'Rising Star Award ×2',
-    description: 'Recognised twice at MPSeDC for Flutter delivery, security focus, and on-time releases.',
+    description: 'I received the MPSeDC Rising Star Award twice for Flutter delivery and on-time releases.',
   },
   {
     year: '2026',
-    title: 'Personal SaaS & Open Source',
-    description: 'Building Stays Connect, Stays Matrix, AttendoX — exploring premium product design and AI-powered UX.',
+    title: 'My products & open source',
+    description:
+      'I continue side projects on GitHub — hospitality, HRMS, AI browser, and this portfolio site.',
   },
 ];
 
@@ -293,7 +297,7 @@ export const EXPERIENCES: Experience[] = [
     duration: 'Feb 2024 — Present',
     location: 'Bhopal, MP · On-site',
     description:
-      'Develop Flutter mobile applications for the Government of Madhya Pradesh — including MPeSeva and Sankat Ke Saathi — across Android and iOS. Responsibilities include UI implementation, Provider/GetX state management, REST API integration, offline storage, biometric auth, and production releases.',
+      'I develop Flutter mobile apps for the Government of Madhya Pradesh — including MPeSeva and Sankat Ke Saathi — on Android and iOS. I handle UI, Provider/GetX, REST APIs, offline storage, biometric auth, and production releases.',
     technologies: [
       'Flutter',
       'Dart',
@@ -305,10 +309,10 @@ export const EXPERIENCES: Experience[] = [
       'Biometric Auth',
     ],
     achievements: [
-      'Rising Star Award (2024) — MPSeDC recognition for Flutter delivery on MPeSeva',
-      'Rising Star Award (2025) — MPSeDC recognition for Sankat Ke Saathi delivery',
-      'End-to-end ownership: architecture, APIs, security, and app store releases',
-      'Coordination with backend teams and government stakeholders for production rollouts',
+      'I received the Rising Star Award (2024) for my Flutter work on MPeSeva',
+      'I received the Rising Star Award (2025) for Sankat Ke Saathi delivery',
+      'I own architecture, API integration, security, and app store releases end to end',
+      'I coordinate with backend teams and government stakeholders for rollouts',
     ],
     type: 'government',
   },
@@ -319,12 +323,12 @@ export const EXPERIENCES: Experience[] = [
     duration: 'Aug 2022 — Dec 2023',
     location: 'Pune, MH',
     description:
-      'Built and maintained iOS applications using Swift and UIKit with polished UI/UX and smooth navigation. Contributed to enterprise projects (Titan Project, Wonder Health App) integrating HealthKit, Core Data and Core Animation.',
+      'I built and maintained iOS apps with Swift and UIKit. I contributed to Titan and Wonder Health, integrating HealthKit, Core Data, and Core Animation.',
     technologies: ['Swift', 'UIKit', 'HealthKit', 'Core Data', 'Core Animation', 'CocoaPods', 'Git'],
     achievements: [
-      'Shipped feature updates for Titan & Wonder Health apps on the App Store',
-      'Improved navigation performance with custom UIKit transitions',
-      'Collaborated with designers & backend teams on scalable client-ready solutions',
+      'I shipped feature updates for Titan & Wonder Health on the App Store',
+      'I improved navigation with custom UIKit transitions',
+      'I worked with design and backend teams on production-ready features',
     ],
     type: 'enterprise',
   },
@@ -335,12 +339,12 @@ export const EXPERIENCES: Experience[] = [
     duration: '2022 — 2023',
     location: 'Remote · India',
     description:
-      'Built Android and Flutter MVPs, plus Angular dashboards and REST integrations for startups and small businesses.',
+      'I built Android and Flutter MVPs, Angular dashboards, and REST integrations for startups and small businesses.',
     technologies: ['Flutter', 'Android', 'Kotlin', 'Java', 'Angular', 'Firebase', 'MySQL'],
     achievements: [
-      'Shipped Flutter & Android MVPs published to Play Store',
-      'Built e-commerce, weather, and utility apps — several open on GitHub',
-      'Maintained long-term retainers with international clients',
+      'I published Flutter & Android MVPs on the Play Store',
+      'I built e-commerce, weather, and utility apps — many are on my GitHub',
+      'I worked with clients in India and abroad on contract engagements',
     ],
     type: 'freelance',
   },
@@ -553,11 +557,11 @@ export const PROJECTS: Project[] = [
   {
     id: 'staylive-portfolio',
     title: 'Staylive Portfolio',
-    tagline: 'This site — Angular on GitHub Pages.',
+    tagline: 'My portfolio — this website.',
     description:
-      'Open-source personal portfolio built with Angular 21, Tailwind, GSAP, and GitHub Actions CI/CD — deployed to GitHub Pages at /staylive.',
+      'I built this site with Angular 21, Tailwind, and GitHub Actions CI/CD. It is deployed to GitHub Pages and documents my real work.',
     problem:
-      'Needed a fast, recruiter-ready portfolio with real project links and verifiable education stats.',
+      'I wanted one place to show my education, experience, GitHub projects, and contact details — all verifiable.',
     features: [
       'Angular 21 standalone components & lazy routes',
       'GitHub Pages deploy via GitHub Actions',
@@ -600,7 +604,7 @@ export const AWARDS: Award[] = [
     issuer: 'MPSeDC (Government of MP)',
     year: '2024',
     description:
-      'MPSeDC Rising Star Award for Flutter delivery on the MPeSeva citizen-services application.',
+      'I received this award for my Flutter delivery on the MPeSeva citizen-services application.',
     icon: '★',
   },
   {
@@ -609,7 +613,7 @@ export const AWARDS: Award[] = [
     issuer: 'MPSeDC (Government of MP)',
     year: '2025',
     description:
-      'Second Rising Star Award for delivery on the Sankat Ke Saathi emergency-services application.',
+      'I received my second Rising Star Award for Sankat Ke Saathi emergency-services delivery.',
     icon: '★',
   },
 ];
@@ -646,33 +650,23 @@ export const CERTIFICATIONS: Certification[] = [
 ];
 
 export const SERVICES: Service[] = [
-  { id: 's1', title: 'Flutter App Development', description: 'Cross-platform mobile apps with native performance and beautiful UI.', icon: 'smartphone' },
-  { id: 's2', title: 'Angular Web Development', description: 'Modern, scalable SPAs and dashboards with SSR-ready architecture.', icon: 'globe' },
-  { id: 's3', title: 'Full Stack Development', description: 'End-to-end solutions from database design to deployment.', icon: 'layers' },
-  { id: 's4', title: 'API Integration', description: 'RESTful APIs, third-party integrations, and microservices.', icon: 'plug' },
-  { id: 's5', title: 'Firebase Integration', description: 'Auth, Firestore, Cloud Functions, and real-time features.', icon: 'flame' },
-  { id: 's6', title: 'UI/UX Development', description: 'Pixel-perfect interfaces with motion design and accessibility.', icon: 'palette' },
-  { id: 's7', title: 'Performance Optimization', description: 'Faster load times, smaller bundles, and smoother animations.', icon: 'zap' },
-  { id: 's8', title: 'App Architecture', description: 'Clean architecture, state management, and scalable codebases.', icon: 'box' },
+  { id: 's1', title: 'Flutter App Development', description: 'I build cross-platform mobile apps with native performance and polished UI.', icon: 'smartphone' },
+  { id: 's2', title: 'Angular Web Development', description: 'I create scalable SPAs and dashboards with modern Angular and TypeScript.', icon: 'globe' },
+  { id: 's3', title: 'Full Stack Development', description: 'I deliver end-to-end products — from APIs and data models to deployment.', icon: 'layers' },
+  { id: 's4', title: 'API Integration', description: 'I integrate REST APIs, third-party services, and secure auth flows.', icon: 'plug' },
+  { id: 's5', title: 'Firebase Integration', description: 'I set up Auth, Firestore, FCM, Crashlytics, and Cloud Functions.', icon: 'flame' },
+  { id: 's6', title: 'UI/UX Development', description: 'I design responsive interfaces with motion, accessibility, and clarity.', icon: 'palette' },
+  { id: 's7', title: 'Performance Optimization', description: 'I profile and improve load time, bundle size, and animation smoothness.', icon: 'zap' },
+  { id: 's8', title: 'App Architecture', description: 'I structure apps with clean architecture and maintainable state layers.', icon: 'box' },
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 't-mpsedc',
-    name: 'Senior Project Lead',
-    role: 'Project Director',
-    company: 'MPSeDC · Govt. of Madhya Pradesh',
-    content:
-      'Mayur has consistently delivered production Flutter applications for our government initiatives — strong architecture, clear communication with stakeholders, and dependable release discipline.',
-    rating: 5,
-  },
-];
+export const TESTIMONIALS: Testimonial[] = [];
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'a1', title: 'GitHub Repositories', description: `Public repos on @${GITHUB.username}`, value: `${GITHUB.publicRepos}`, icon: 'github' },
-  { id: 'a2', title: 'RGPV CGPA', description: 'B.Tech CSE · Rajiv Gandhi Proudyogiki Vishwavidyalaya', value: '8.28', icon: 'graduation' },
-  { id: 'a3', title: 'Rising Star Awards', description: 'Recognised twice at MPSeDC', value: '2×', icon: 'award' },
-  { id: 'a4', title: 'Years in Industry', description: 'Since B.Tech graduation (2022)', value: '4+', icon: 'star' },
+  { id: 'a1', title: 'GitHub Repositories', description: `My public repos @${GITHUB.username}`, value: `${GITHUB.publicRepos}`, icon: 'github' },
+  { id: 'a2', title: 'RGPV CGPA', description: 'My B.Tech CSE grade at RGPV, Bhopal', value: '8.28', icon: 'graduation' },
+  { id: 'a3', title: 'Rising Star Awards', description: 'My MPSeDC recognitions (2024 & 2025)', value: '2×', icon: 'award' },
+  { id: 'a4', title: 'Years in Industry', description: 'Professional work since I graduated (2022)', value: '4+', icon: 'star' },
 ];
 
 export const CODE_SNIPPET = `class Developer {

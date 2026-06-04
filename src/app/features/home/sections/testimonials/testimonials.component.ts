@@ -19,8 +19,10 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
+    const len = this.portfolio.testimonials.length;
+    if (len < 2) return;
+
     this.interval = setInterval(() => {
-      const len = this.portfolio.testimonials.length;
       this.activeIndex.update((i) => (i + 1) % len);
     }, 5000);
   }

@@ -111,27 +111,29 @@
     </div>
   </div>
 
-  <div class="mt-24">
-    <p class="section-label">Testimonials</p>
-    <h2 class="section-title mb-10">Trusted by teams</h2>
-    <div class="grid md:grid-cols-2 gap-5">
-      @for (t of portfolio.testimonials; track t.id) {
-        <div class="card p-7">
-          <div class="flex gap-0.5 text-accent-cyan text-sm mb-4">★★★★★</div>
-          <p class="text-sm text-text-muted leading-relaxed italic">"{{ t.content }}"</p>
-          <div class="flex items-center gap-3 mt-6 pt-6 border-t border-line">
-            @if (t.avatar) {
-              <img [src]="t.avatar" [alt]="t.name" class="w-11 h-11 rounded-xl object-cover border border-line-strong" />
-            } @else {
-              <div class="w-11 h-11 rounded-xl border border-line-strong bg-accent/10 text-accent text-xs font-bold flex items-center justify-center shrink-0">MP</div>
-            }
-            <div>
-              <p class="font-semibold text-sm">{{ t.name }}</p>
-              <p class="text-xs text-text-subtle">{{ t.role }} · {{ t.company }}</p>
+  @if (portfolio.testimonials.length) {
+    <div class="mt-24">
+      <p class="section-label">Testimonials</p>
+      <h2 class="section-title mb-10">Trusted by teams</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        @for (t of portfolio.testimonials; track t.id) {
+          <div class="card p-7">
+            <div class="flex gap-0.5 text-accent-cyan text-sm mb-4">★★★★★</div>
+            <p class="text-sm text-text-muted leading-relaxed italic">"{{ t.content }}"</p>
+            <div class="flex items-center gap-3 mt-6 pt-6 border-t border-line">
+              @if (t.avatar) {
+                <img [src]="t.avatar" [alt]="t.name" class="w-11 h-11 rounded-xl object-cover border border-line-strong" />
+              } @else {
+                <div class="w-11 h-11 rounded-xl border border-line-strong bg-accent/10 text-accent text-xs font-bold flex items-center justify-center shrink-0">MP</div>
+              }
+              <div>
+                <p class="font-semibold text-sm">{{ t.name }}</p>
+                <p class="text-xs text-text-subtle">{{ t.role }} · {{ t.company }}</p>
+              </div>
             </div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
-  </div>
+  }
 </section>
