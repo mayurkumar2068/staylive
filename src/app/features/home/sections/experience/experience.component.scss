@@ -1,3 +1,19 @@
 .timeline-glow {
   box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
 }
+
+@media (max-width: 767px) {
+  :host section {
+    overflow-x: hidden;
+  }
+
+  :host .glass {
+    margin-left: 2.75rem !important;
+    margin-right: 0;
+    max-width: calc(100% - 2.75rem);
+    min-width: 0;
+    padding: 1.25rem 1rem !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}

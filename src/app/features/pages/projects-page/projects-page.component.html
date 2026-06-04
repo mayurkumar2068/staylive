@@ -19,12 +19,12 @@
         </button>
       }
     </div>
-    <span class="ml-auto chip chip-accent">{{ portfolio.filteredProjects().length }} showcased</span>
+    <span class="projects-toolbar-meta chip chip-accent">{{ portfolio.filteredProjects().length }} showcased</span>
     <a
       [href]="portfolio.github.profileUrl"
       target="_blank"
       rel="noopener"
-      class="chip hover:border-accent/40 transition-colors"
+      class="projects-toolbar-meta chip hover:border-accent/40 transition-colors"
       (click)="$event.stopPropagation()"
     >
       GitHub · {{ portfolio.github.publicRepos }} repos ↗
@@ -69,11 +69,9 @@
         <!-- Body -->
         <div class="showcase-body">
           <div class="showcase-meta">
-            <span>{{ project.year }}</span>
-            <span class="w-1 h-1 rounded-full bg-text-subtle/60"></span>
-            <span>{{ project.platform }}</span>
-            <span class="w-1 h-1 rounded-full bg-text-subtle/60"></span>
-            <span class="text-accent">{{ project.role }}</span>
+            <span class="showcase-meta-item">{{ project.year }}</span>
+            <span class="showcase-meta-item">{{ project.platform }}</span>
+            <span class="showcase-meta-item showcase-meta-item--accent">{{ project.role }}</span>
           </div>
 
           <h3 class="showcase-title">{{ project.title }}</h3>
@@ -86,8 +84,8 @@
             <div class="showcase-metrics">
               @for (m of project.metrics; track m.label) {
                 <div class="showcase-metric">
-                  <p class="text-2xl font-bold gradient-text">{{ m.value }}</p>
-                  <p class="text-[10px] uppercase tracking-wider text-text-subtle mt-1">{{ m.label }}</p>
+                  <p class="showcase-metric-value">{{ m.value }}</p>
+                  <p class="showcase-metric-label">{{ m.label }}</p>
                 </div>
               }
             </div>

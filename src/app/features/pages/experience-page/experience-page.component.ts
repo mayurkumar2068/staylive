@@ -7,6 +7,7 @@ import { PortfolioService } from '../../../services/portfolio.service';
   standalone: true,
   imports: [PageHeroComponent],
   templateUrl: './experience-page.component.html',
+  styleUrl: './experience-page.component.scss',
 })
 export class ExperiencePageComponent {
   readonly portfolio = inject(PortfolioService);
